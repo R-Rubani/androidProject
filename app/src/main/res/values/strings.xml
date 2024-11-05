@@ -16,4 +16,5 @@
     <string name="editTextLastName">Last Name</string>
     <string name="buttonRegister">Register</string>
     <string name="tvRegisterHeading">Register</string>
+    <string name="editTextBirthDate">Date Of Birth</string>
 </resources>
