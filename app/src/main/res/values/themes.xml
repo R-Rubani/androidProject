@@ -8,8 +8,6 @@
         <item name="android:actionBarStyle">@font/montserrat</item>
         <item name="actionBarSize">80dp</item>
 
-
-
         <item name="colorPrimary">@color/primaryRed</item>
         <item name="colorSecondary">@color/secondaryRed</item>
     </style>
