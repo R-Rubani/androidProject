@@ -1,0 +1,29 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.HealthConnectApplication" parent="Theme.MaterialComponents.Light.DarkActionBar.Bridge">
+        <!-- Customize your light theme here. -->
+
+<!--        <item name="android:windowSplashScreenBackground">@color/secondaryRed</item>-->
+        <item name="android:actionBarSize">80dp</item>
+        <item name="android:actionBarStyle">@font/montserrat</item>
+        <item name="actionBarSize">80dp</item>
+
+
+
+        <item name="colorPrimary">@color/primaryRed</item>
+        <item name="colorSecondary">@color/secondaryRed</item>
+    </style>
+
+    <style name="Theme.HealthConnectApplication" parent="Base.Theme.HealthConnectApplication">
+<!--        <item name="android:titleTextStyle">@style/CustomActionBarTitleText</item>-->
+<!--    </style>-->
+
+<!--    <style name="CustomActionBarTitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">-->
+<!--        <item name="android:textColor">@android:color/white</item> -->
+<!--        <item name="android:textSize">20sp</item>-->
+<!--        <item name="android:fontFamily">sans-serif-medium</item>-->
+<!--        <item name="android:textStyle">bold</item>-->
+    </style>
+
+
+</resources>
