@@ -1,20 +1,26 @@
 <resources>
+
     <string name="app_name"> Health Connect </string>
     <string name="tvTagLine">Care, Connect and Consult</string>
     <string name="imageViewConnect">Connect</string>
+
     <string name="buttonAsDoctor">Doctor</string>
     <string name="buttonAsPatient">Patient</string>
     <string name="tvContinue">Continue as..</string>
+
     <string name="editTextEmail">Email Address</string>
     <string name="editTextPassword">Password</string>
-    <string name="tvClickToRegister">Not Registered Yet? Click here.</string>
-    <string name="tvLoginHeading">Login</string>
-    <string name="tvClickToLogin">Already Registered? Click here.</string>
-    <string name="buttonLogin">Login</string>
     <string name="editTextPhone">Contact Number</string>
     <string name="editTextFirstName">First Name</string>
     <string name="editTextLastName">Last Name</string>
-    <string name="buttonRegister">Register</string>
-    <string name="tvRegisterHeading">Register</string>
     <string name="editTextBirthDate">Date Of Birth</string>
+
+
+    <string name="tvLoginHeading">Login</string>
+    <string name="tvRegisterHeading">Register</string>
+    <string name="buttonLogin">Login</string>
+    <string name="buttonRegister">Register</string>
+    <string name="tvClickToRegister">Not Registered Yet? Click here.</string>
+    <string name="tvClickToLogin">Already Registered? Click here.</string>
+
 </resources>
