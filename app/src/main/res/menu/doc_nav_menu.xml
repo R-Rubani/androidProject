@@ -10,7 +10,7 @@
     <item
 
         android:id="@+id/navToAppointments"
-        android:icon="@drawable/icon"
+        android:icon="@drawable/icon_appointments"
         android:title="@string/iconAppointments"
         android:onClick="openAppointments"
         android:visible="true" />
