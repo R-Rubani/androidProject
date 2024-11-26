@@ -25,7 +25,7 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void run() {
                finish();
-                startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+                startActivity(new Intent(WelcomeActivity.this, RegisterActivity.class));
             }
        };
 
