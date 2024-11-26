@@ -22,5 +22,17 @@
     <string name="buttonRegister">Register</string>
     <string name="tvClickToRegister">Not Registered Yet? Click here.</string>
     <string name="tvClickToLogin">Already Registered? Click here.</string>
+    
+    
+    <!-- Doctor NavBar Icons -->
+    <string name="iconDocProfile">Doctor Profile</string>
+    <string name="iconAppointments">Appointments</string>
+    <string name="iconPatientRecords">Patient Records</string>
+
+    <!-- Patient NavBar Icons -->
+    <string name="iconPatientProfile">Patient Profile</string>
+    <string name="iconPatientAppointments">Patient Appointments</string>
+    <string name="iconMedicalHistory">Medical History</string>
+    
 
 </resources>
