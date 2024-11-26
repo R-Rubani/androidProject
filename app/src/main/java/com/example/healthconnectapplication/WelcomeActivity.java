@@ -25,7 +25,7 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void run() {
                finish();
-                startActivity(new Intent(WelcomeActivity.this, DoctorProfileActivity.class));
+                startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
             }
        };
 
