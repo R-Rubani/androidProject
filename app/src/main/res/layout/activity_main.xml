@@ -83,6 +83,23 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonAsDoctor"
         app:layout_constraintVertical_bias="0.0" />
 
+    <Button
+        android:id="@+id/buttonAsAdmin"
+        android:layout_width="140dp"
+        android:layout_height="67dp"
+        android:background="@drawable/rounded_buttons"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/buttonAsAdmin"
+        android:textColor="@color/primaryButtonText"
+        android:textSize="30sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAsDoctor"
+        app:layout_constraintVertical_bias="0.894" />
+
     <TextView
         android:id="@+id/tvContinue"
         android:layout_width="165dp"

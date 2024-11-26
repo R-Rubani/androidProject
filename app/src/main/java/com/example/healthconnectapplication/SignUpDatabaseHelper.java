@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class SignUpDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "UserDetails.db";
     private static final int DATABASE_VERSION = 1;
@@ -16,7 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_PHONE = "phone";
     private static final String COLUMN_DATE_OF_BIRTH = "dateOfBirth";
 
-    public DatabaseHelper(Context context) {
+    public SignUpDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

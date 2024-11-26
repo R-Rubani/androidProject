@@ -187,18 +187,17 @@
         android:layout_height="45dp"
         android:layout_marginTop="13dp"
         android:background="@drawable/rounded_buttons"
-        android:ems="10"
+        android:gravity="center"
         android:hint="@string/editTextBirthDate"
-        android:inputType="date"
-        android:textAlignment="center"
         android:textColor="@color/black"
         android:textColorHint="@color/primaryBlue"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone"
         app:layout_constraintVertical_bias="0.0" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

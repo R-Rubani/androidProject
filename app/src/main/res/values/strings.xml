@@ -6,6 +6,7 @@
 
     <string name="buttonAsDoctor">Doctor</string>
     <string name="buttonAsPatient">Patient</string>
+    <string name="buttonAsAdmin">Admin</string>
     <string name="tvContinue">Continue as..</string>
 
     <string name="editTextEmail">Email Address</string>
