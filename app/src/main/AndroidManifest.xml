@@ -12,10 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthConnectApplication"
         tools:targetApi="31" >
-        <activity
-            android:name=".doc_nav"
-            android:exported="false"
-            android:label="@string/title_activity_doc_nav" />
+
         <activity
             android:name=".PatientRecordsActivity"
             android:exported="false" />

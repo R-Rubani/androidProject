@@ -17,7 +17,7 @@
 
 
     <string name="tvLoginHeading">Login</string>
-    <string name="tvRegisterHeading">Register</string>
+    <string name="tvRegisterHeading">Register Patient</string>
     <string name="buttonLogin">Login</string>
     <string name="buttonRegister">Register</string>
     <string name="tvClickToRegister">Not Registered Yet? Click here.</string>

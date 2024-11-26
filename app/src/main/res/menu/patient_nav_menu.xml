@@ -4,14 +4,24 @@
     <item
         android:title="@string/iconPatientProfile"
         android:icon="@drawable/icon_patient_profile"
+        android:id="@+id/navToPatientProfile"
+        android:onClick="openPatientProfile"
+        android:visible="true"
         />
     <item
         android:title="@string/iconPatientAppointments"
         android:icon="@drawable/icon_appointments"
+        android:id="@+id/navToPatientAppointments"
+        android:onClick="openPatientAppointments"
+        android:visible="true"
+
         />
     <item
         android:title="@string/iconMedicalHistory"
         android:icon="@drawable/icon_patient_records"
+        android:id="@+id/navToMedicalHistory"
+        android:onClick="openMedicalHistory"
+        android:visible="true"
         />
 
 </menu>
