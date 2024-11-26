@@ -2,9 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navToDocProfile"
+
         android:icon="@drawable/icon_doc_profile"
         android:title="@string/iconDocProfile"
+        android:id="@+id/navToDocProfile"
         android:onClick="openDocProfile"
         android:visible="true" />
     <item

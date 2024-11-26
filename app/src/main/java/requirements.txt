@@ -1,0 +1,16 @@
+Health Connect
+
+- [ ] Splash screen = welcome
+- [ ] Login screen ———— email/password authentication — sign in with google
+- [ ] New doctor in clinic? == Register ………not by doctor itself but using database
+- [ ] Patient only login—no register
+- [ ] Appointments
+- [ ] Reminders for appointments
+- [ ] Patients page leading to patient history
+- [ ] Prescription pads for each patient— including diagnosis treatment and dosage
+- [ ] ======Doctor’s Profile with — Records  and availability for future appointments
+
+- [ ] ======Patients should be able to see Doctors profile and availability
+
+
+- [ ] EDIT PROFILE PAGES ==== unchangeable email
