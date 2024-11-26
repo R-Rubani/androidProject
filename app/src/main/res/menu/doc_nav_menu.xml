@@ -4,15 +4,21 @@
     <item
         android:id="@+id/navToDocProfile"
         android:icon="@drawable/icon_doc_profile"
-        android:title="@string/iconDocProfile" />
+        android:title="@string/iconDocProfile"
+        android:onClick="openDocProfile"
+        android:visible="true" />
     <item
 
         android:id="@+id/navToAppointments"
-        android:icon="@drawable/icon_appointments"
-        android:title="@string/iconAppointments" />
+        android:icon="@drawable/icon"
+        android:title="@string/iconAppointments"
+        android:onClick="openAppointments"
+        android:visible="true" />
     <item
         android:id="@+id/navToPatientRecords"
         android:icon="@drawable/icon_patient_records"
-        android:title="@string/iconPatientRecords" />
+        android:title="@string/iconPatientRecords"
+        android:onClick="openPatientRecords"
+        android:visible="true" />
 
 </menu>

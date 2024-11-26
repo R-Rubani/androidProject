@@ -22,8 +22,8 @@
     <string name="buttonRegister">Register</string>
     <string name="tvClickToRegister">Not Registered Yet? Click here.</string>
     <string name="tvClickToLogin">Already Registered? Click here.</string>
-    
-    
+
+
     <!-- Doctor NavBar Icons -->
     <string name="iconDocProfile">Doctor Profile</string>
     <string name="iconAppointments">Appointments</string>
@@ -33,6 +33,12 @@
     <string name="iconPatientProfile">Patient Profile</string>
     <string name="iconPatientAppointments">Patient Appointments</string>
     <string name="iconMedicalHistory">Medical History</string>
-    
+    <string name="tvAppointmentsHeading">Appointments</string>
+    <string name="editTextApptDate">Choose an Appointment Date:</string>
+    <string name="title_activity_doc_nav">doc_nav</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
 
 </resources>
