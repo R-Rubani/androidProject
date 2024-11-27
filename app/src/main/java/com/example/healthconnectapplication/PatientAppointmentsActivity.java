@@ -6,12 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-public class EditPatientProfileActivity extends AppCompatActivity {
+public class PatientAppointmentsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_patient_profile);
+        setContentView(R.layout.activity_patient_appointments);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -19,17 +19,14 @@ public class EditPatientProfileActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayUseLogoEnabled(true);
         }
 
-
     }
-
     public void openPatientProfile(MenuItem item) {
-        startActivity(new Intent(EditPatientProfileActivity.this, PatientProfileActivity.class));
+        startActivity(new Intent(PatientAppointmentsActivity.this, PatientProfileActivity.class));
     }
     public void openPatientAppointments(MenuItem item) {
-        startActivity(new Intent(EditPatientProfileActivity.this, PatientAppointmentsActivity.class));
+        startActivity(new Intent(PatientAppointmentsActivity.this, PatientAppointmentsActivity.class));
     }
     public void openMedicalHistory(MenuItem item) {
-        startActivity(new Intent(EditPatientProfileActivity.this, MedicalHistoryActivity.class));
+        startActivity(new Intent(PatientAppointmentsActivity.this, MedicalHistoryActivity.class));
     }
-
 }

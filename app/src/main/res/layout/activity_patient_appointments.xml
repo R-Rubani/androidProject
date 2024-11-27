@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditPatientProfileActivity">
+    tools:context=".PatientAppointmentsActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/patientNavBar"
@@ -24,6 +24,5 @@
         app:layout_constraintVertical_bias="1.0"
         >
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

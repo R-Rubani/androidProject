@@ -54,7 +54,7 @@
     <Button
         android:id="@+id/buttonAsDoctor"
         android:layout_width="240dp"
-        android:layout_height="87dp"
+        android:layout_height="90dp"
         android:background="@drawable/rounded_buttons"
         android:fontFamily="@font/montserrat"
         android:text="@string/buttonAsDoctor"
@@ -62,15 +62,15 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/materialToolbar3"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.19" />
 
     <Button
         android:id="@+id/buttonAsPatient"
-        android:layout_width="237dp"
-        android:layout_height="91dp"
+        android:layout_width="240dp"
+        android:layout_height="90dp"
         android:layout_marginTop="17dp"
         android:background="@drawable/rounded_buttons"
         android:fontFamily="@font/montserrat"
@@ -85,8 +85,9 @@
 
     <Button
         android:id="@+id/buttonAsAdmin"
-        android:layout_width="140dp"
-        android:layout_height="67dp"
+        android:layout_width="240dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="21dp"
         android:background="@drawable/rounded_buttons"
         android:fontFamily="@font/montserrat"
         android:text="@string/buttonAsAdmin"
@@ -95,10 +96,10 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAsDoctor"
-        app:layout_constraintVertical_bias="0.894" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonAsPatient"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tvContinue"
