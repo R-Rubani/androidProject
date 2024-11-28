@@ -4,24 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewAppointmentActivity">
-
-    <TextView
-        android:id="@+id/textViewAddNewAppointment"
-        android:layout_width="325dp"
-        android:layout_height="58dp"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/textViewAddNewAppointment"
-        android:textAlignment="center"
-        android:textColor="@color/primaryRed"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/materialToolbar3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.653" />
-
+    tools:context=".AddNewPatientRecordActivity">
 
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -39,6 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+
     <EditText
         android:id="@+id/editTextPatientID"
         android:layout_width="300dp"
@@ -55,7 +39,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/materialToolbar3"
-        app:layout_constraintVertical_bias="0.158" />
+        app:layout_constraintVertical_bias="0.039" />
 
     <EditText
         android:id="@+id/editTextFirstName"
@@ -73,7 +57,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/materialToolbar3"
-        app:layout_constraintVertical_bias="0.322" />
+        app:layout_constraintVertical_bias="0.172" />
+
 
     <EditText
         android:id="@+id/editTextLastName"
@@ -90,7 +75,7 @@
         app:layout_constraintHorizontal_bias="0.785"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/materialToolbar3"
-        app:layout_constraintVertical_bias="0.32" />
+        app:layout_constraintVertical_bias="0.172" />
 
     <EditText
         android:id="@+id/editTextAppointmentDate"
@@ -109,22 +94,64 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPatientID"
-        app:layout_constraintVertical_bias="0.265" />
+        app:layout_constraintVertical_bias="0.159" />
 
-    <ImageButton
-        android:id="@+id/imageBtnAddRecord"
-        android:layout_width="49dp"
+    <EditText
+        android:id="@+id/editTextDiagnosis"
+        android:layout_width="300dp"
         android:layout_height="45dp"
-
-        android:backgroundTint="@android:color/transparent"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_buttons"
+        android:ems="10"
+        android:hint="@string/editTextDiagnosis"
+        android:inputType="textShortMessage"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/primaryBlue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.735"
-        app:srcCompat="@drawable/icon_patient_profile"
-        app:tint="@color/white" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPatientID"
+        app:layout_constraintVertical_bias="0.316" />
+
+    <EditText
+        android:id="@+id/editTextTreatment"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_buttons"
+        android:ems="10"
+        android:hint="@string/editTextTreatment"
+        android:inputType="textShortMessage"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/primaryBlue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPatientID"
+        app:layout_constraintVertical_bias="0.481" />
+
+    <EditText
+        android:id="@+id/editTextMedication"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_buttons"
+        android:ems="10"
+        android:hint="@string/editTextMedication"
+        android:inputType="textShortMessage"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/primaryBlue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPatientID"
+        app:layout_constraintVertical_bias="0.638" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/docNavBar"
@@ -144,8 +171,38 @@
         app:layout_constraintVertical_bias="1.0"
         >
 
-
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <ImageButton
+        android:id="@+id/imageBtnAddRecord"
+        android:layout_width="49dp"
+        android:layout_height="45dp"
+
+        android:backgroundTint="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.985"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.829"
+        app:srcCompat="@drawable/icon_patient_profile"
+        app:tint="@color/white" />
+
+    <TextView
+        android:id="@+id/textViewAddPatientRecord"
+        android:layout_width="292dp"
+        android:layout_height="48dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/textViewAddPatientRecord"
+        android:textAlignment="center"
+        android:textColor="@color/primaryRed"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/materialToolbar3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.653" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

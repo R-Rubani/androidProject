@@ -42,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         firstNameEditText = findViewById(R.id.editTextFirstName);
         lastNameEditText = findViewById(R.id.editTextLastName);
-        emailEditText = findViewById(R.id.editTextEmail);
+        emailEditText = findViewById(R.id.editTextEmailAddress);
         passwordEditText = findViewById(R.id.editTextPassword);
         phoneEditText = findViewById(R.id.editTextPhone);
         dateEditText = findViewById(R.id.editTextDate);

@@ -58,13 +58,13 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/editTextEmailAddress"
         android:layout_width="300dp"
         android:layout_height="45dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_buttons"
         android:ems="10"
-        android:hint="@string/editTextEmail"
+        android:hint="@string/editTextEmailAddress"
         android:inputType="textEmailAddress"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -90,7 +90,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -191,7 +191,6 @@
         android:hint="@string/editTextBirthDate"
         android:textColor="@color/black"
         android:textColorHint="@color/primaryBlue"
-        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
