@@ -11,18 +11,131 @@
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:background="@color/secondaryRed"
-        app:menu="@menu/doc_nav_menu"
-        app:labelVisibilityMode="unlabeled"
-        app:itemIconSize="60dp"
         app:itemBackground="@color/secondaryRed"
+        app:itemIconSize="60dp"
         app:itemIconTint="@color/nav_color"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-         >
+        app:menu="@menu/doc_nav_menu">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <TextView
+        android:id="@+id/textViewAccountDetails"
+        android:layout_width="316dp"
+        android:layout_height="58dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/textViewAccountDetails"
+        android:textAlignment="center"
+        android:textColor="@color/primaryButtonText"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/docNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.093" />
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar3"
+        android:layout_width="410dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/rounded_blue_frames"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+    <TextView
+        android:id="@+id/tvTagLine"
+        android:layout_width="286dp"
+        android:layout_height="30dp"
+        android:text="@string/tvTagLine"
+        android:textAlignment="center"
+        android:textColor="@color/primaryBlue"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAccountDetails"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textViewDoctorName"
+        android:layout_width="302dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginBottom="267dp"
+        android:background="@drawable/rounded_buttons"
+        android:text="@string/textViewDoctorName"
+        android:textAlignment="center"
+        android:textColor="@color/primaryBlue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/docNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/materialToolbar3" />
+
+    <TextView
+        android:id="@+id/textViewEmailAddress"
+        android:layout_width="302dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_buttons"
+        android:text="@string/textViewEmailAddress"
+        android:textAlignment="center"
+        android:textColor="@color/primaryBlue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/docNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/materialToolbar3"
+        app:layout_constraintVertical_bias="0.347" />
+
+    <TextView
+        android:id="@+id/textViewContactNumber"
+        android:layout_width="302dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_buttons"
+        android:text="@string/textViewContactNumber"
+        android:textAlignment="center"
+        android:textColor="@color/primaryBlue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/docNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/materialToolbar3"
+        app:layout_constraintVertical_bias="0.555" />
+
+
+    <TextView
+        android:id="@+id/textViewDOB"
+        android:layout_width="302dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_buttons"
+        android:text="@string/textViewDOB"
+        android:textAlignment="center"
+        android:textColor="@color/primaryBlue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/docNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/materialToolbar3"
+        app:layout_constraintVertical_bias="0.756" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

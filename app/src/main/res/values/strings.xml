@@ -9,7 +9,7 @@
     <string name="buttonAsAdmin">Admin</string>
     <string name="tvContinue">Continue as..</string>
 
-    <string name="editTextEmail">Email Address</string>
+    <string name="editTextEmailAddress">Email Address</string>
     <string name="editTextPassword">Password</string>
     <string name="editTextPhone">Contact Number</string>
     <string name="editTextFirstName">First Name</string>
@@ -34,12 +34,30 @@
     <string name="iconPatientProfile">Patient Profile</string>
     <string name="iconPatientAppointments">Patient Appointments</string>
     <string name="iconMedicalHistory">Medical History</string>
+
+    <!-- Appointment strings -->
     <string name="tvAppointmentsHeading">Appointments</string>
     <string name="editTextApptDate">Choose an Appointment Date:</string>
-    <string name="title_activity_doc_nav">doc_nav</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="editTextPatientID">Patient ID</string>
+    <string name="editTextPatientName">Patient Name</string>
+    <string name="editTextAppointmentDate">Appointment Date</string>
+    <string name="editTextDiagnosis">Diagnosis</string>
+    <string name="editTextTreatment">Treatment</string>
+    <string name="editTextMedication">Medication</string>
+
+    <!-- Adding New Record strings -->
+    <string name="textViewAddPatientRecord">Add new Record</string>
+    <string name="buttonAsOldPatient">Old Patient</string>
+    <string name="buttonAsNewPatient">New Patient</string>
+    <string name="textViewAddNewAppointment">New Appointment</string>
+    <string name="textViewAccountDetails">Account Details</string>
+
+    <!-- To add Account Details -->
+    <string name="textViewDoctorName" />
+    <string name="textViewContactNumber" />
+    <string name="textViewEmailAddress" />
+    <string name="textViewDOB" />
+    <string name="textViewPatientName" />
 
 
 </resources>

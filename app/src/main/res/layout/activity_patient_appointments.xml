@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PatientRecordsActivity">
-
+    tools:context=".PatientAppointmentsActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/docNavBar"
+        android:id="@+id/patientNavBar"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:background="@color/secondaryRed"
-        app:menu="@menu/doc_nav_menu"
+        app:menu="@menu/patient_nav_menu"
         app:labelVisibilityMode="unlabeled"
         app:itemIconSize="60dp"
         app:itemBackground="@color/secondaryRed"
@@ -24,7 +23,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         >
-
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
