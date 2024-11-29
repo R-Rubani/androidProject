@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private Button buttonAsDoctor;
-    private Button buttonAsAdmin;
+
     private Button buttonAsPatient;
 
     // SharedPreferences Constants
@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize buttons
         buttonAsDoctor = findViewById(R.id.buttonAsDoctor);
-        buttonAsAdmin = findViewById(R.id.buttonAsAdmin);
         buttonAsPatient = findViewById(R.id.buttonAsPatient);
 
         // Set up click listeners for the buttons to store the user type
@@ -40,14 +39,6 @@ public class MainActivity extends AppCompatActivity {
             // startActivity(new Intent(MainActivity.this, DoctorActivity.class));
         });
 
-        buttonAsDoctor.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                // Show Admin button on long press
-                buttonAsAdmin.setVisibility(View.VISIBLE);
-                return true; // Indicate that the long press is handled
-            }
-        });
 
         buttonAsPatient.setOnClickListener(v -> {
             storeUserType("patient"); // Store as patient
@@ -55,11 +46,7 @@ public class MainActivity extends AppCompatActivity {
             // startActivity(new Intent(MainActivity.this, PatientActivity.class));
         });
 
-        buttonAsAdmin.setOnClickListener(v -> {
-            storeUserType("admin"); // Store as admin
-            // Optionally, navigate to the Admin's activity
-            // startActivity(new Intent(MainActivity.this, AdminActivity.class));
-        });
+
     }
 
     /**

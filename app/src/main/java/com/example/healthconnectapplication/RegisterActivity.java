@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    private SignUpDatabaseHelper dbHelper;
+    private UserRegistrationDatabaseHelper dbHelper;
 
     private EditText firstNameEditText,
             lastNameEditText,
@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         mAuth = FirebaseAuth.getInstance();
-        dbHelper = new SignUpDatabaseHelper(this);
+        dbHelper = new UserRegistrationDatabaseHelper(this);
 
         firstNameEditText = findViewById(R.id.editTextFirstName);
         lastNameEditText = findViewById(R.id.editTextLastName);
@@ -108,7 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         // Store additional details in SQLite
                         String sDateOfBirth = dateEditText.getText().toString();
-                        boolean isInserted = dbHelper.insertUserDetails(firstName, lastName, phone, sDateOfBirth);
+                        boolean isInserted = dbHelper.insertUserDetails(firstName, lastName,email, phone, sDateOfBirth);
                         if (isInserted) {
                             Toast.makeText(RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
                             // Navigate to login screen or main activity
