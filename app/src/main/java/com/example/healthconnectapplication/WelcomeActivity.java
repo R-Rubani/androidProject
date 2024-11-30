@@ -16,12 +16,7 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        SQLiteDatabase db = openOrCreateDatabase("DoctorDetails.db", MODE_PRIVATE, null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS DoctorDetails (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "firstName TEXT NOT NULL, " +
-                "lastName TEXT NOT NULL, " +
-                "email TEXT NOT NULL)");
+
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -33,7 +28,7 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void run() {
                finish();
-                startActivity(new Intent(WelcomeActivity.this, RegisterActivity.class));
+                startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
             }
        };
 
