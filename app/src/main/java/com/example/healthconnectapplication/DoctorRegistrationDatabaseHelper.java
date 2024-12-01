@@ -67,6 +67,7 @@ public class DoctorRegistrationDatabaseHelper extends SQLiteOpenHelper {
         // If the insert is successful, result will not be -1
         return result != -1;
     }
+
     public int getDoctorIdByEmail(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT id FROM " + TABLE_NAME + " WHERE " + COLUMN_EMAIL + " = ?";
