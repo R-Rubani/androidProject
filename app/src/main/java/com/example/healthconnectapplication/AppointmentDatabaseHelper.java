@@ -11,10 +11,13 @@ import java.util.List;
 public class AppointmentDatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "appointments.db";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 3;
 
     public static final String TABLE_NAME = "appointments";
+    public static final String COLUMN_APPOINTMENT_ID = "appointment_id";
     public static final String COLUMN_PATIENT_ID = "patient_id";
+    public static final String COLUMN_DOCTOR_ID = "doctor_id";
+
     public static final String COLUMN_FIRST_NAME = "first_name";
     public static final String COLUMN_LAST_NAME = "last_name";
     public static final String COLUMN_APPOINTMENT_DATE = "appointment_date";
@@ -25,7 +28,9 @@ public class AppointmentDatabaseHelper extends SQLiteOpenHelper {
     // SQL statement to create the table
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + TABLE_NAME + " (" +
-                    COLUMN_PATIENT_ID + " TEXT PRIMARY KEY, " +
+                    COLUMN_APPOINTMENT_ID+ " TEXT PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_PATIENT_ID + " TEXT, " +
+                    COLUMN_DOCTOR_ID + " TEXT, " +
                     COLUMN_FIRST_NAME + " TEXT, " +
                     COLUMN_LAST_NAME + " TEXT, " +
                     COLUMN_APPOINTMENT_DATE + " TEXT, " +

@@ -1,9 +1,13 @@
 package com.example.healthconnectapplication;
 
+import static java.lang.Integer.parseInt;
+
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -21,12 +25,18 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
     private ImageButton imageBtnAddRecord;
 
     private FirebaseAuth mAuth;
+    private FirebaseAuthUtils fbAuth;
     private AppointmentDatabaseHelper dbHelper;
+    private UserRegistrationDatabaseHelper uDbHelper;
+    private DoctorRegistrationDatabaseHelper dDbHelper;
+    private int docId;
+    private String doctorId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_patient_record);
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setLogo(R.mipmap.ic_launcher);
@@ -35,6 +45,7 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+        fbAuth = new FirebaseAuthUtils();
 
         // Initialize Views
         editTextPatientID = findViewById(R.id.editTextPatientID);
@@ -48,6 +59,8 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
 
         // Initialize the database helper for SQLite
         dbHelper = new AppointmentDatabaseHelper(this);
+        dDbHelper = new DoctorRegistrationDatabaseHelper(this);
+        uDbHelper = new UserRegistrationDatabaseHelper(this);
 
         // Set onClickListener for the "Add Record" button
         imageBtnAddRecord.setOnClickListener(new View.OnClickListener() {
@@ -57,12 +70,15 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
             }
         });
     }
+
     public void openDocProfile(MenuItem item) {
         startActivity(new Intent(AddNewPatientRecordActivity.this, DoctorProfileActivity.class));
     }
+
     public void openAppointments(MenuItem item) {
         startActivity(new Intent(AddNewPatientRecordActivity.this, AppointmentDetailsActivity.class));
     }
+
     public void openPatientRecords(MenuItem item) {
         startActivity(new Intent(AddNewPatientRecordActivity.this, PatientRecordsActivity.class));
     }
@@ -84,32 +100,42 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
             return;
         }
 
-        // Check if the patient ID is valid (could be checked against a database if needed)
+        // Get the doctor ID
+        docId = getDocId(fbAuth.getLoggedInUserEmail());
+        if (docId == -1) {
+            Toast.makeText(this, "No doctor found with this email. Please check your login status.", Toast.LENGTH_SHORT).show();
+            return;
+        } else {
+            doctorId = String.valueOf(docId);
+        }
+
+        // Check if the patient ID is valid
         if (!isPatientIDValid(patientID)) {
             Toast.makeText(AddNewPatientRecordActivity.this, "Invalid Patient ID", Toast.LENGTH_SHORT).show();
             return;
         }
 
         // Save the patient record to the SQLite database
-        savePatientRecord(patientID, firstName, lastName, appointmentDate, diagnosis, treatment, medication);
+        savePatientRecord(patientID, doctorId, firstName, lastName, appointmentDate, diagnosis, treatment, medication);
 
-        // Show a success message
+        // Show a success message and navigate back to the patient records activity
         Toast.makeText(AddNewPatientRecordActivity.this, "Record added successfully", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(AddNewPatientRecordActivity.this,PatientRecordsActivity.class));
+        startActivity(new Intent(AddNewPatientRecordActivity.this, PatientRecordsActivity.class));
         finish(); // Close activity after adding the record
     }
 
-    // Simulate checking if a Patient ID exists
     private boolean isPatientIDValid(String patientID) {
-        // In a real scenario, you would query the patient database to check if the ID exists.
-        // Here, just returning true for simplicity.
-        return true;
+        // Validate patient ID against the database
+        return uDbHelper.isPatientIdValid(parseInt(patientID));
     }
 
-    // Method to save the patient record into the SQLite database
-    private void savePatientRecord(String patientID, String firstName, String lastName, String appointmentDate,
-                                   String diagnosis, String treatment, String medication) {
-        // Get writable database
+    private int getDocId(String doctorEmail) {
+        Log.d("AddNewPatientRecord", "Doctor Email: " + doctorEmail); // Log the email for debugging
+        return dDbHelper.getDoctorIdByEmail(doctorEmail);
+    }
+
+    private void savePatientRecord(String patientID, String doctorID, String firstName, String lastName,
+                                   String appointmentDate, String diagnosis, String treatment, String medication) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         // Create a ContentValues object to hold the data
@@ -121,12 +147,14 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
         values.put(AppointmentDatabaseHelper.COLUMN_DIAGNOSIS, diagnosis);
         values.put(AppointmentDatabaseHelper.COLUMN_TREATMENT, treatment);
         values.put(AppointmentDatabaseHelper.COLUMN_MEDICATION, medication);
+        values.put(AppointmentDatabaseHelper.COLUMN_DOCTOR_ID, doctorID); // Save the doctor ID
 
         // Insert the record into the database
         long newRowId = db.insert(AppointmentDatabaseHelper.TABLE_NAME, null, values);
         if (newRowId == -1) {
             Toast.makeText(this, "Failed to insert the record", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Record added successfully", Toast.LENGTH_SHORT).show();
         }
     }
-
 }
