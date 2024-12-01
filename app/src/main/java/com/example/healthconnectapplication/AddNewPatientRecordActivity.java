@@ -95,6 +95,7 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
 
         // Show a success message
         Toast.makeText(AddNewPatientRecordActivity.this, "Record added successfully", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(AddNewPatientRecordActivity.this,PatientRecordsActivity.class));
         finish(); // Close activity after adding the record
     }
 

@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "Welcome " + user.getEmail(), Toast.LENGTH_SHORT).show();
 
                         // Navigate to the main screen (replace MainActivity with your desired activity)
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, AddNewPatientRecordActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
