@@ -1,5 +1,7 @@
 package com.example.healthconnectapplication;
 
+import static java.lang.Integer.parseInt;
+
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -22,6 +24,8 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private AppointmentDatabaseHelper dbHelper;
+    private UserRegistrationDatabaseHelper uDbHelper;
+    private DoctorRegistrationDatabaseHelper dDbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +107,9 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
     private boolean isPatientIDValid(String patientID) {
         // In a real scenario, you would query the patient database to check if the ID exists.
         // Here, just returning true for simplicity.
-        return true;
+       return uDbHelper.isPatientIdValid(parseInt(patientID));
+
+
     }
 
     // Method to save the patient record into the SQLite database
