@@ -2,6 +2,8 @@ package com.example.healthconnectapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.content.Intent;
 
@@ -16,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private EditText emailEditText, passwordEditText;
     private Button loginButton;
+    public static final String USER_EMAIL_KEY = "userEmail";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
 
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(LoginActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(LoginActivity.this, AddNewPatientRecordActivity.class);
+                Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             } else {
@@ -51,12 +54,22 @@ public class LoginActivity extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
+
+
                         // Login successful
                         FirebaseUser user = mAuth.getCurrentUser();
+
                         Toast.makeText(LoginActivity.this, "Welcome " + user.getEmail(), Toast.LENGTH_SHORT).show();
 
-                        // Navigate to the main screen (replace MainActivity with your desired activity)
-                        Intent intent = new Intent(LoginActivity.this, AddNewPatientRecordActivity.class);
+                        String userEmail = user.getEmail().toString();
+                        SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.PREFS_NAME, MODE_PRIVATE);
+                        //SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString(USER_EMAIL_KEY,userEmail);
+                        editor.apply(); // Save the preference
+
+                        // Navigate to the next screen
+                        Intent intent = new Intent(LoginActivity.this, DoctorProfileActivity.class);
                         startActivity(intent);
                         finish();
                     } else {

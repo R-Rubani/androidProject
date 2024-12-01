@@ -58,6 +58,12 @@
     <string name="textViewEmailAddress" />
     <string name="textViewDOB" />
     <string name="textViewPatientName" />
+    <string name="tvPatientName" />
+    <string name="tvAppointmentDate" />
+    <string name="tvDiagnosis" />
+    <string name="tvTreatment" />
+    <string name="tvRecordsHeading">Patient Records</string>
+    <string name="buttonLogOut">Log Out</string>
 
 
 </resources>

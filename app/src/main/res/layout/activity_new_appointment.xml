@@ -23,12 +23,11 @@
         app:layout_constraintVertical_bias="0.653" />
 
 
-
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/materialToolbar3"
         android:layout_width="410dp"
         android:layout_height="0dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="160dp"
         android:background="@drawable/rounded_blue_frames"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
@@ -96,7 +95,6 @@
         android:id="@+id/editTextAppointmentDate"
         android:layout_width="300dp"
         android:layout_height="45dp"
-        android:layout_marginTop="15dp"
         android:background="@drawable/rounded_buttons"
         android:ems="10"
         android:hint="@string/editTextAppointmentDate"
@@ -109,7 +107,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPatientID"
-        app:layout_constraintVertical_bias="0.265" />
+        app:layout_constraintVertical_bias="0.277" />
 
     <ImageButton
         android:id="@+id/imageBtnAddRecord"

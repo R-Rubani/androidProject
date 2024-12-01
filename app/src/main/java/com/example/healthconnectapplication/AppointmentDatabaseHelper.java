@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +12,14 @@ import java.util.List;
 public class AppointmentDatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "appointments.db";
-    public static final int DATABASE_VERSION = 4;
+    public static final int DATABASE_VERSION = 5;
 
     public static final String TABLE_NAME = "appointments";
     public static final String COLUMN_APPOINTMENT_ID = "appointment_id";
     public static final String COLUMN_PATIENT_ID = "patient_id";
+    public static final String COLUMN_PATIENT_EMAIL = "patient_email";
     public static final String COLUMN_DOCTOR_ID = "doctor_id";
+    public static final String COLUMN_DOCTOR_EMAIL ="doctor_email";
 
     public static final String COLUMN_FIRST_NAME = "first_name";
     public static final String COLUMN_LAST_NAME = "last_name";
@@ -30,7 +33,9 @@ public class AppointmentDatabaseHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + TABLE_NAME + " (" +
                     COLUMN_APPOINTMENT_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_PATIENT_ID + " TEXT, " +
+                    COLUMN_PATIENT_EMAIL + " TEXT, " +
                     COLUMN_DOCTOR_ID + " TEXT, " +
+                    COLUMN_DOCTOR_EMAIL + " TEXT, " +
                     COLUMN_FIRST_NAME + " TEXT, " +
                     COLUMN_LAST_NAME + " TEXT, " +
                     COLUMN_APPOINTMENT_DATE + " TEXT, " +
@@ -62,15 +67,17 @@ public class AppointmentDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM appointments WHERE patient_email = ?";
         Cursor cursor = db.rawQuery(query, new String[]{email});
+        String[] columnNames = cursor.getColumnNames();
 
         if (cursor.moveToFirst()) {
             do {
                 appointments.add(new Appointment(
-                        cursor.getInt(cursor.getColumnIndex("id")),
-                        cursor.getString(cursor.getColumnIndex("patient_name")),
-                        cursor.getString(cursor.getColumnIndex("appointment_date")),
-                        cursor.getString(cursor.getColumnIndex("diagnosis")),
-                        cursor.getString(cursor.getColumnIndex("treatment"))
+                        cursor.getInt(cursor.getColumnIndex(COLUMN_APPOINTMENT_ID)),
+                        cursor.getString(cursor.getColumnIndex(COLUMN_FIRST_NAME))+" "
+                                + cursor.getString(cursor.getColumnIndex(COLUMN_LAST_NAME)),
+                        cursor.getString(cursor.getColumnIndex(COLUMN_APPOINTMENT_DATE)),
+                        cursor.getString(cursor.getColumnIndex(COLUMN_DIAGNOSIS)),
+                        cursor.getString(cursor.getColumnIndex(COLUMN_TREATMENT))
                 ));
             } while (cursor.moveToNext());
         }

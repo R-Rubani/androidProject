@@ -8,8 +8,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAppointmentDetails"
-        android:layout_width="415dp"
-        android:layout_height="421dp"
+        android:layout_width="0dp"
+        android:layout_height="420dp"
         android:background="@color/secondaryBlue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,12 +52,27 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.46" />
 
+    <ImageButton
+        android:id="@+id/imageButtonAddAppointment"
+        android:layout_width="55dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="357dp"
+        android:layout_marginTop="260dp"
+        android:layout_marginBottom="34dp"
+        android:backgroundTint="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@+id/docNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/recyclerViewAppointmentDetails"
+        app:layout_constraintTop_toBottomOf="@+id/editTextApptDate"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/icon_patient_profile"
+        app:tint="@color/white" />
+
     <EditText
         android:id="@+id/editTextApptDate"
         android:layout_width="412dp"
         android:layout_height="46dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginBottom="1dp"
         android:background="@drawable/rounded_buttons"
         android:ems="10"
         android:hint="@string/editTextApptDate"
@@ -70,5 +85,5 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAppointmentsHeading"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

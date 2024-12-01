@@ -44,7 +44,7 @@
         android:id="@+id/materialToolbar3"
         android:layout_width="410dp"
         android:layout_height="0dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="160dp"
         android:background="@drawable/rounded_blue_frames"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
@@ -54,6 +54,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/tvTagLine"
         android:layout_width="286dp"
@@ -72,12 +73,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewAccountDetails"
         app:layout_constraintVertical_bias="0.0" />
 
+
     <TextView
         android:id="@+id/textViewDoctorName"
-        android:layout_width="302dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="41dp"
-        android:layout_marginBottom="267dp"
         android:background="@drawable/rounded_buttons"
         android:text="@string/textViewDoctorName"
         android:textAlignment="center"
@@ -85,12 +85,14 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/docNavBar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/materialToolbar3" />
+        app:layout_constraintTop_toTopOf="@+id/materialToolbar3"
+        app:layout_constraintVertical_bias="0.069" />
 
     <TextView
         android:id="@+id/textViewEmailAddress"
-        android:layout_width="302dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_buttons"
         android:text="@string/textViewEmailAddress"
@@ -99,14 +101,14 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/docNavBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/materialToolbar3"
-        app:layout_constraintVertical_bias="0.347" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDoctorName"
+        app:layout_constraintVertical_bias="0.055" />
 
     <TextView
         android:id="@+id/textViewContactNumber"
-        android:layout_width="302dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_buttons"
         android:text="@string/textViewContactNumber"
@@ -115,15 +117,14 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/docNavBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/materialToolbar3"
-        app:layout_constraintVertical_bias="0.555" />
-
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmailAddress"
+        app:layout_constraintVertical_bias="0.064" />
 
     <TextView
         android:id="@+id/textViewDOB"
-        android:layout_width="302dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_buttons"
         android:text="@string/textViewDOB"
@@ -132,10 +133,27 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/docNavBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/materialToolbar3"
-        app:layout_constraintVertical_bias="0.756" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewContactNumber"
+        app:layout_constraintVertical_bias="0.103" />
+
+    <Button
+        android:id="@+id/buttonLogOut"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_buttons"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/buttonLogOut"
+        android:textColor="@color/primaryRed"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/docNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDOB"
+        app:layout_constraintVertical_bias="0.405" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

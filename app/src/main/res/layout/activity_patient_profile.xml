@@ -24,5 +24,133 @@
         >
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
+    <TextView
+        android:id="@+id/textViewAccountDetails"
+        android:layout_width="316dp"
+        android:layout_height="58dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/textViewAccountDetails"
+        android:textAlignment="center"
+        android:textColor="@color/primaryButtonText"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/patientNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.093" />
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar3"
+        android:layout_width="410dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/rounded_blue_frames"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvTagLine"
+        android:layout_width="286dp"
+        android:layout_height="30dp"
+        android:text="@string/tvTagLine"
+        android:textAlignment="center"
+        android:textColor="@color/primaryBlue"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAccountDetails"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <TextView
+        android:id="@+id/textViewPatientName"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_buttons"
+        android:text="@string/textViewPatientName"
+        android:textAlignment="center"
+        android:textColor="@color/primaryBlue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/patientNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/materialToolbar3"
+        app:layout_constraintVertical_bias="0.069" />
+
+    <TextView
+        android:id="@+id/textViewEmailAddress"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_buttons"
+        android:text="@string/textViewEmailAddress"
+        android:textAlignment="center"
+        android:textColor="@color/primaryBlue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/patientNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPatientName"
+        app:layout_constraintVertical_bias="0.055" />
+
+    <TextView
+        android:id="@+id/textViewContactNumber"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_buttons"
+        android:text="@string/textViewContactNumber"
+        android:textAlignment="center"
+        android:textColor="@color/primaryBlue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/patientNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmailAddress"
+        app:layout_constraintVertical_bias="0.064" />
+
+    <TextView
+        android:id="@+id/textViewDOB"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_buttons"
+        android:text="@string/textViewDOB"
+        android:textAlignment="center"
+        android:textColor="@color/primaryBlue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/patientNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewContactNumber"
+        app:layout_constraintVertical_bias="0.103" />
+
+    <Button
+        android:id="@+id/buttonLogOut"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_buttons"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/buttonLogOut"
+        android:textColor="@color/primaryRed"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/patientNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDOB"
+        app:layout_constraintVertical_bias="0.405" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

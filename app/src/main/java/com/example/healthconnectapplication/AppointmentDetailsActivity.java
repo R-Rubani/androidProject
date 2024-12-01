@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.List;
@@ -30,6 +32,14 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayUseLogoEnabled(true);
         }
 
+        ImageButton addAppointment = findViewById(R.id.imageButtonAddAppointment);
+        addAppointment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AppointmentDetailsActivity.this,NewAppointmentActivity.class));
+            }
+        });
+
         recyclerViewAppointmentDetails = findViewById(R.id.recyclerViewAppointmentDetails);
         recyclerViewAppointmentDetails.setLayoutManager(new LinearLayoutManager(this));
 
@@ -37,10 +47,10 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
 
         // Fetch shared preferences to determine who logged in
         SharedPreferences sharedPreferences = getSharedPreferences(MainActivity.PREFS_NAME, MODE_PRIVATE);
-        String userType = sharedPreferences.getString("userType", ""); // "doctor" or "patient"
-        String userEmail = sharedPreferences.getString("email", ""); // Email used for login
+        String userType = sharedPreferences.getString("userType", null); // "doctor" or "patient"
+        String userEmail = sharedPreferences.getString("userEmail", null); // Email used for login
 
-        if (userEmail.isEmpty()) {
+        if (userEmail==null) {
             Toast.makeText(this, "No user email found. Please log in again.", Toast.LENGTH_SHORT).show();
             finish();
             return;
