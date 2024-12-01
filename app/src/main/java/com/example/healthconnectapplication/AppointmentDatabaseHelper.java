@@ -1,8 +1,12 @@
 package com.example.healthconnectapplication;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AppointmentDatabaseHelper extends SQLiteOpenHelper {
 
@@ -52,4 +56,47 @@ public class AppointmentDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_ENTRIES); // Drop the table if it exists
         onCreate(db); // Create a new one
     }
+
+    public List<Appointment> getAppointmentsByPatientEmail(String email) {
+        List<Appointment> appointments = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM appointments WHERE patient_email = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{email});
+
+        if (cursor.moveToFirst()) {
+            do {
+                appointments.add(new Appointment(
+                        cursor.getInt(cursor.getColumnIndex("id")),
+                        cursor.getString(cursor.getColumnIndex("patient_name")),
+                        cursor.getString(cursor.getColumnIndex("appointment_date")),
+                        cursor.getString(cursor.getColumnIndex("diagnosis")),
+                        cursor.getString(cursor.getColumnIndex("treatment"))
+                ));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return appointments;
+    }
+
+    public List<Appointment> getAppointmentsByDoctorEmail(String email) {
+        List<Appointment> appointments = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM appointments WHERE doctor_email = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{email});
+
+        if (cursor.moveToFirst()) {
+            do {
+                appointments.add(new Appointment(
+                        cursor.getInt(cursor.getColumnIndex("id")),
+                        cursor.getString(cursor.getColumnIndex("patient_name")),
+                        cursor.getString(cursor.getColumnIndex("appointment_date")),
+                        cursor.getString(cursor.getColumnIndex("diagnosis")),
+                        cursor.getString(cursor.getColumnIndex("treatment"))
+                ));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return appointments;
+    }
+
 }
