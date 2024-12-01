@@ -42,7 +42,7 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-
+        fbAuth = new FirebaseAuthUtils();
         // Initialize Views
         editTextPatientID = findViewById(R.id.editTextPatientID);
         editTextFirstName = findViewById(R.id.editTextFirstName);
@@ -56,6 +56,8 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
         // Initialize the database helper for SQLite
         dbHelper = new AppointmentDatabaseHelper(this);
         dDbHelper = new DoctorRegistrationDatabaseHelper(this);
+        uDbHelper = new UserRegistrationDatabaseHelper(this);
+
 
         // Set onClickListener for the "Add Record" button
         imageBtnAddRecord.setOnClickListener(new View.OnClickListener() {
