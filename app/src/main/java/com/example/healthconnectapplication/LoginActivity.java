@@ -39,6 +39,9 @@ public class LoginActivity extends AppCompatActivity {
 
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(LoginActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, AddNewPatientRecordActivity.class);
+                startActivity(intent);
+                finish();
             } else {
                 loginUser(email, password);
             }

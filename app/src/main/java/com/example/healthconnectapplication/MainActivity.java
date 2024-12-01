@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         // Set up click listeners for the buttons to store the user type
         buttonAsDoctor.setOnClickListener(v -> {
             storeUserType("doctor");
-            Intent intent = new Intent(MainActivity.this, AddNewPatientRecordActivity.class);
+            Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
             startActivity(intent);
             finish();
         });

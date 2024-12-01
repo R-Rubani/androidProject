@@ -1,27 +1,45 @@
 package com.example.healthconnectapplication;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    private FirebaseAuth firebaseAuth;
+
     private UserRegistrationDatabaseHelper dbHelper;
+    private DoctorRegistrationDatabaseHelper dDbHelper;
+
     private EditText editTextFirstName, editTextLastName, editTextEmailAddress, editTextPhone, editTextPassword, editTextDate;
     private Button buttonRegister;
     private TextView tvClickToLogin;
+
+    // SharedPreferences Constants
+    public static final String PREFS_NAME = "UserPrefs";
+    public static final String USER_TYPE_KEY = "userType";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        // Initialize the database helper
+        // Initialize Firebase Auth
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        // Initialize the database helpers
         dbHelper = new UserRegistrationDatabaseHelper(this);
+        dDbHelper = new DoctorRegistrationDatabaseHelper(this);
 
         // Initialize views
         editTextFirstName = findViewById(R.id.editTextFirstName);
@@ -34,16 +52,10 @@ public class RegisterActivity extends AppCompatActivity {
         tvClickToLogin = findViewById(R.id.tvClickToLogin);
 
         // Set onClick listener for the register button
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                registerUser();
-            }
-        });
+        buttonRegister.setOnClickListener(v -> registerUser());
 
         // Optional: Handle "Click to Login" text if you want navigation
         tvClickToLogin.setOnClickListener(v -> {
-            // Logic for navigating to login screen can be added here
             Toast.makeText(RegisterActivity.this, "Login navigation clicked!", Toast.LENGTH_SHORT).show();
         });
     }
@@ -63,14 +75,42 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        // Insert data into the database
-        boolean isInserted = dbHelper.insertUserDetails(firstName, lastName, email, phone, birthDate);
-        if (isInserted) {
-            Toast.makeText(this, "User registered successfully!", Toast.LENGTH_SHORT).show();
-            clearFields();
-        } else {
-            Toast.makeText(this, "Registration failed. Try again.", Toast.LENGTH_SHORT).show();
-        }
+        // Firebase Authentication - Create User with Email and Password
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        // User successfully registered in Firebase
+                        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                        String userId = firebaseUser != null ? firebaseUser.getUid() : "";
+
+                        // After Firebase signup, store user details in SQLite
+                        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+                        String userType = sharedPreferences.getString(USER_TYPE_KEY, "patient"); // Default to "patient"
+
+                        boolean isInserted;
+
+                        // Insert data based on user type
+                        if (userType.equals("doctor")) {
+                            isInserted = dbHelper.insertUserDetails(firstName, lastName, email, phone, birthDate);
+                        } else if (userType.equals("admin")) {
+                            isInserted = dDbHelper.insertDoctorDetails(firstName, lastName, email, phone, birthDate);
+                        } else {
+                            isInserted = dbHelper.insertUserDetails(firstName, lastName, email, phone, birthDate);
+                        }
+
+                        // Show appropriate message
+                        if (isInserted) {
+                            Toast.makeText(RegisterActivity.this, userType + " registered successfully!", Toast.LENGTH_SHORT).show();
+                            clearFields();
+                        } else {
+                            Toast.makeText(RegisterActivity.this, "Registration failed. Try again.", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        // Firebase signup failed
+                        String errorMessage = task.getException() != null ? task.getException().getMessage() : "Registration failed!";
+                        Toast.makeText(RegisterActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void clearFields() {
