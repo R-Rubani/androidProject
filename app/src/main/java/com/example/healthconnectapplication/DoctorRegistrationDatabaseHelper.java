@@ -2,6 +2,7 @@ package com.example.healthconnectapplication;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -65,5 +66,18 @@ public class DoctorRegistrationDatabaseHelper extends SQLiteOpenHelper {
 
         // If the insert is successful, result will not be -1
         return result != -1;
+    }
+    public int getDoctorIdByEmail(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT id FROM " + TABLE_NAME + " WHERE " + COLUMN_EMAIL + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{email});
+        int doctorId = -1; // Default to -1 if not found
+
+        if (cursor != null && cursor.moveToFirst()) {
+            doctorId = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
+            cursor.close();
+        }
+
+        return doctorId;
     }
 }

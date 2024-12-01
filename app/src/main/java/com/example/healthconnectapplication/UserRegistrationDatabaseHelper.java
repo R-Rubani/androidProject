@@ -2,6 +2,7 @@ package com.example.healthconnectapplication;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -39,7 +40,7 @@ public class UserRegistrationDatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertUserDetails(String firstName, String lastName,String email, String phone, String dateOfBirth) {
+    public boolean insertUserDetails(String firstName, String lastName, String email, String phone, String dateOfBirth) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_FIRST_NAME, firstName);
@@ -47,8 +48,21 @@ public class UserRegistrationDatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_EMAIL, email);
         values.put(COLUMN_PHONE, phone);
         values.put(COLUMN_DATE_OF_BIRTH, dateOfBirth);
+
         long result = db.insert(TABLE_NAME, null, values);
-       // db.close();
-        return result != -1;
+        return result != -1; // Return true if insertion is successful
+    }
+    public boolean isPatientIdValid(int patientId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT id FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(patientId)});
+
+        boolean isValid = false;
+        if (cursor != null && cursor.moveToFirst()) {
+            isValid = true; // Patient ID exists
+            cursor.close();
+        }
+
+        return isValid;
     }
 }
