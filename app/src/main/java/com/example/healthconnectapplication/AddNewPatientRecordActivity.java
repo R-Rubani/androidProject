@@ -23,9 +23,12 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
     private ImageButton imageBtnAddRecord;
 
     private FirebaseAuth mAuth;
+    private FirebaseAuthUtils fbAuth;
     private AppointmentDatabaseHelper dbHelper;
     private UserRegistrationDatabaseHelper uDbHelper;
     private DoctorRegistrationDatabaseHelper dDbHelper;
+    private int docId;
+    private String doctorId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,7 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
 
         // Initialize the database helper for SQLite
         dbHelper = new AppointmentDatabaseHelper(this);
+        dDbHelper = new DoctorRegistrationDatabaseHelper(this);
 
         // Set onClickListener for the "Add Record" button
         imageBtnAddRecord.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +64,7 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
                 addPatientRecord();
             }
         });
+
     }
     public void openDocProfile(MenuItem item) {
         startActivity(new Intent(AddNewPatientRecordActivity.this, DoctorProfileActivity.class));
@@ -81,13 +86,20 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
         String treatment = editTextTreatment.getText().toString().trim();
         String medication = editTextMedication.getText().toString().trim();
 
+
         // Validate the input fields
         if (patientID.isEmpty() || firstName.isEmpty() || lastName.isEmpty() ||
                 appointmentDate.isEmpty() || diagnosis.isEmpty() || treatment.isEmpty() || medication.isEmpty()) {
             Toast.makeText(AddNewPatientRecordActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             return;
         }
-
+        docId=getDocId(fbAuth.getLoggedInUserEmail());
+        if(docId==-1){
+            Toast.makeText(this, "You Dont have access", Toast.LENGTH_SHORT).show();
+        }
+        else{
+         doctorId = String.valueOf(docId);
+        }
         // Check if the patient ID is valid (could be checked against a database if needed)
         if (!isPatientIDValid(patientID)) {
             Toast.makeText(AddNewPatientRecordActivity.this, "Invalid Patient ID", Toast.LENGTH_SHORT).show();
@@ -95,7 +107,7 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
         }
 
         // Save the patient record to the SQLite database
-        savePatientRecord(patientID, firstName, lastName, appointmentDate, diagnosis, treatment, medication);
+        savePatientRecord(patientID,doctorId, firstName, lastName, appointmentDate, diagnosis, treatment, medication);
 
         // Show a success message
         Toast.makeText(AddNewPatientRecordActivity.this, "Record added successfully", Toast.LENGTH_SHORT).show();
@@ -111,9 +123,16 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
 
 
     }
+    private int getDocId(String doctorID) {
+        // In a real scenario, you would query the patient database to check if the ID exists.
+        // Here, just returning true for simplicity.
+        return dDbHelper.getDoctorIdByEmail(doctorID);
+
+
+    }
 
     // Method to save the patient record into the SQLite database
-    private void savePatientRecord(String patientID, String firstName, String lastName, String appointmentDate,
+    private void savePatientRecord(String patientID,String doctorID, String firstName, String lastName, String appointmentDate,
                                    String diagnosis, String treatment, String medication) {
         // Get writable database
         SQLiteDatabase db = dbHelper.getWritableDatabase();
