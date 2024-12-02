@@ -15,6 +15,9 @@
         android:theme="@style/Theme.HealthConnectApplication"
         tools:targetApi="31">
         <activity
+            android:name=".EditPatientProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditRecordActivity"
             android:exported="false" />
         <activity

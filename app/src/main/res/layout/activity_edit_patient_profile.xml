@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditRecordActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar3"
+        android:layout_width="410dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/rounded_blue_frames"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvEditProfile"
+        android:layout_width="317dp"
+        android:layout_height="77dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/tvEditProfile"
+        android:textAlignment="center"
+        android:textColor="@color/primaryButtonText"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/patientNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.104" />
+
+
+    <EditText
+        android:id="@+id/editTextContactNumber"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:background="@drawable/rounded_buttons"
+        android:ems="10"
+        android:hint="@string/editTextPhone"
+        android:inputType="textShortMessage"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textColorHint="@color/primaryBlue"
+        app:layout_constraintBottom_toTopOf="@+id/patientNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvEditProfile"
+        app:layout_constraintVertical_bias="0.545" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/patientNavBar"
+        android:layout_width="411dp"
+        android:layout_height="80dp"
+        android:background="@color/secondaryRed"
+        app:itemBackground="@color/secondaryRed"
+        app:itemIconSize="60dp"
+        app:itemIconTint="@color/nav_color"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/patient_nav_menu">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <Button
+        android:id="@+id/buttonSaveChanges"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_buttons"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/buttonSaveChanges"
+        android:textColor="@color/primaryButtonText"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/patientNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextContactNumber"
+        app:layout_constraintVertical_bias="0.284" />
+
+    <TextView
+        android:id="@+id/textViewEditOnlyPhone"
+        android:layout_width="329dp"
+        android:layout_height="61dp"
+        android:layout_marginEnd="40dp"
+        android:text="@string/textViewEditOnlyPhone"
+        android:textAlignment="center"
+        android:textColor="@color/baseGrey"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextContactNumber"
+        app:layout_constraintEnd_toEndOf="@+id/materialToolbar3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/materialToolbar3"
+        app:layout_constraintVertical_bias="1.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>

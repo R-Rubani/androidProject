@@ -67,6 +67,20 @@ public class UserRegistrationDatabaseHelper extends SQLiteOpenHelper {
         return isValid;
     }
 
+    public boolean updateRecord(
+            String patientEmail,
+            String phone)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PHONE, phone);
+
+        // Update the row and check the number of rows affected
+        int rowsAffected = db.update(TABLE_NAME, values, COLUMN_EMAIL + " = ?",
+                new String[]{String.valueOf(patientEmail)});
+
+        return rowsAffected > 0;
+    }
     public boolean isPatientEmailExists(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT " + COLUMN_ID + " FROM " + TABLE_NAME + " WHERE " + COLUMN_EMAIL + " = ?";

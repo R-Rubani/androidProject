@@ -24,15 +24,12 @@ public class PatientRecordsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewPatientRecords;
     private AppointmentDatabaseHelper dbHelper;
-    private EditText editTextAppointmentDate;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_records);
 
-      editTextAppointmentDate = findViewById(R.id.editTextApptDate);
 
 
         if (getSupportActionBar() != null) {

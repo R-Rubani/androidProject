@@ -72,6 +72,9 @@
     <string name="tvEditRecord">Edit Record</string>
     <string name="buttonSaveChanges">Save Changes</string>
     <string name="tvMedication" />
+    <string name="buttonEditProfile">Edit</string>
+    <string name="tvEditProfile">Edit Profile</string>
+    <string name="textViewEditOnlyPhone">Patient is not allowed to edit any ther personal details except Contact Number.:</string>
 
 
 </resources>
