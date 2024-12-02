@@ -1,6 +1,8 @@
 package com.example.healthconnectapplication;
 
 
+import static java.lang.Integer.parseInt;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -21,13 +23,20 @@ public class NewAppointmentActivity extends AppCompatActivity {
 
     private EditText editTextPatientID, editTextFirstName, editTextLastName, editTextAppointmentDate;
     private AppointmentDateDatabaseHelper dbHelper;
-
+    private UserRegistrationDatabaseHelper uDbHelper;
+    String patientEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_appointment);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setLogo(R.mipmap.ic_launcher);
+            getSupportActionBar().setDisplayUseLogoEnabled(true);
+        }
 
+        uDbHelper = new UserRegistrationDatabaseHelper(this);
 
         editTextAppointmentDate = findViewById(R.id.editTextAppointmentDate);
         editTextAppointmentDate.setOnClickListener(new View.OnClickListener() {
@@ -72,13 +81,14 @@ public class NewAppointmentActivity extends AppCompatActivity {
                 String firstName = editTextFirstName.getText().toString().trim();
                 String lastName = editTextLastName.getText().toString().trim();
                 String appointmentDate = editTextAppointmentDate.getText().toString().trim();
+                patientEmail = uDbHelper.getEmailByPatientId(parseInt(patientId));
 
                 // Validate input fields
                 if (patientId.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || appointmentDate.isEmpty()) {
                     Toast.makeText(NewAppointmentActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
                 } else {
                     // Save data in the database
-                    dbHelper.addAppointmentDate(patientId, firstName, lastName, appointmentDate);
+                    dbHelper.addAppointmentDate(patientId,patientEmail, firstName, lastName, appointmentDate);
                     Toast.makeText(NewAppointmentActivity.this, "Appointment added successfully", Toast.LENGTH_SHORT).show();
                     // Optionally, navigate back to AppointmentDetailsActivity or another activity
                     startActivity(new Intent(NewAppointmentActivity.this, AppointmentDetailsActivity.class));

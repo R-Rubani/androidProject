@@ -52,6 +52,7 @@ public class UserRegistrationDatabaseHelper extends SQLiteOpenHelper {
         long result = db.insert(TABLE_NAME, null, values);
         return result != -1; // Return true if insertion is successful
     }
+
     public boolean isPatientIdValid(int patientId) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT id FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + " = ?";
@@ -65,6 +66,7 @@ public class UserRegistrationDatabaseHelper extends SQLiteOpenHelper {
 
         return isValid;
     }
+
     public boolean isPatientEmailExists(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT " + COLUMN_ID + " FROM " + TABLE_NAME + " WHERE " + COLUMN_EMAIL + " = ?";
@@ -73,5 +75,44 @@ public class UserRegistrationDatabaseHelper extends SQLiteOpenHelper {
         boolean exists = cursor.moveToFirst();
         cursor.close();
         return exists;
+    }
+
+    public Cursor getUserDetailsByEmail(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_EMAIL + " = ?";
+        return db.rawQuery(query, new String[]{email});
+    }
+
+    public User getUserFromCursor(Cursor cursor) {
+        if (cursor != null && cursor.moveToFirst()) {
+            String firstName = cursor.getString(cursor.getColumnIndex(COLUMN_FIRST_NAME));
+            String lastName = cursor.getString(cursor.getColumnIndex(COLUMN_LAST_NAME));
+            String phone = cursor.getString(cursor.getColumnIndex(COLUMN_PHONE));
+            String dateOfBirth = cursor.getString(cursor.getColumnIndex(COLUMN_DATE_OF_BIRTH));
+
+            return new User(firstName, lastName, phone, dateOfBirth);
+        }
+        return null;
+    }
+    public String getEmailByPatientId(int patientId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String email = null;
+
+        // Query the database for the email based on patient ID
+        String query = "SELECT " + COLUMN_EMAIL + " FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(patientId)});
+
+        if (cursor != null && cursor.moveToFirst()) {
+            email = cursor.getString(cursor.getColumnIndex(COLUMN_EMAIL));
+            cursor.close();
+        }
+
+        return email;  // Return the email, or null if not found
+    }
+
+    public void closeCursor(Cursor cursor) {
+        if (cursor != null && !cursor.isClosed()) {
+            cursor.close();
+        }
     }
 }

@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             storeUserType("admin");
             Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
             startActivity(intent);
-            
+
         });
 
         // Clear SharedPreferences on restart (Optional for debugging)

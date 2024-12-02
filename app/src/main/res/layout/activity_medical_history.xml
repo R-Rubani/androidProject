@@ -51,6 +51,27 @@
         app:layout_constraintVertical_bias="1.0" />
 
 
+    <TextView
+        android:id="@+id/textViewAppointmentDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:text="Appointment Details"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvMedicalHistory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/textViewAppointments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Appointments will appear here."
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/patientNavBar"
         android:layout_width="0dp"

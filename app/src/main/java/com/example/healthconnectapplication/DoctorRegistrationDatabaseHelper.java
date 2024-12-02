@@ -90,4 +90,31 @@ public class DoctorRegistrationDatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return exists;
     }
+    public Doctor getDoctorByEmail(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_NAME,
+                new String[]{COLUMN_FIRST_NAME, COLUMN_LAST_NAME, COLUMN_EMAIL, "phone", "dateOfBirth"},
+                COLUMN_EMAIL + " = ?",
+                new String[]{email},
+                null, null, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            String firstName = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FIRST_NAME));
+            String lastName = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LAST_NAME));
+            String fullName = firstName + " " + lastName;
+            String contactNumber = cursor.getString(cursor.getColumnIndexOrThrow("phone"));
+            String dob = cursor.getString(cursor.getColumnIndexOrThrow("dateOfBirth"));
+
+            Doctor doctor = new Doctor(fullName, email, contactNumber, dob);
+            cursor.close();
+            return doctor;
+        }
+
+        if (cursor != null) {
+            cursor.close();
+        }
+        return null;
+    }
+
+
 }

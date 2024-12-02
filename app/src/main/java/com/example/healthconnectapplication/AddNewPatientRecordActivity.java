@@ -35,7 +35,7 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
     private UserRegistrationDatabaseHelper uDbHelper;
     private DoctorRegistrationDatabaseHelper dDbHelper;
     private int docId;
-    private String doctorId,docEmail;
+    private String doctorId,docEmail,patientEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +126,8 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
             Toast.makeText(AddNewPatientRecordActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             return;
         }
+        patientEmail = uDbHelper.getEmailByPatientId(parseInt(patientID));
+
         docEmail = fbAuth.getLoggedInUserEmail();
         // Get the doctor ID
         docId = getDocId(docEmail);
@@ -143,7 +145,7 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
         }
 
         // Save the patient record to the SQLite database
-        savePatientRecord(patientID, doctorId, firstName, lastName, appointmentDate, diagnosis, treatment, medication);
+        savePatientRecord(patientID, doctorId, patientEmail,firstName, lastName, appointmentDate, diagnosis, treatment, medication);
 
         // Show a success message and navigate back to the patient records activity
         Toast.makeText(AddNewPatientRecordActivity.this, "Record added successfully", Toast.LENGTH_SHORT).show();
@@ -161,7 +163,7 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
         return dDbHelper.getDoctorIdByEmail(doctorEmail);
     }
 
-    private void savePatientRecord(String patientID, String doctorID, String firstName, String lastName,
+    private void savePatientRecord(String patientID, String doctorID, String patientEmail,String firstName, String lastName,
                                    String appointmentDate, String diagnosis, String treatment, String medication) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -175,8 +177,8 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
         values.put(AppointmentDatabaseHelper.COLUMN_TREATMENT, treatment);
         values.put(AppointmentDatabaseHelper.COLUMN_MEDICATION, medication);
         values.put(AppointmentDatabaseHelper.COLUMN_DOCTOR_ID, doctorID); // Save the doctor ID
-        values.put(AppointmentDatabaseHelper.COLUMN_DOCTOR_ID, docEmail); // Save the doctor ID
-        values.put(AppointmentDatabaseHelper.COLUMN_DOCTOR_ID, doctorID); // Save the doctor ID
+        values.put(AppointmentDatabaseHelper.COLUMN_DOCTOR_EMAIL, docEmail); // Save the doctor ID
+        values.put(AppointmentDatabaseHelper.COLUMN_PATIENT_EMAIL, patientEmail); // Save the doctor ID
 
         // Insert the record into the database
         long newRowId = db.insert(AppointmentDatabaseHelper.TABLE_NAME, null, values);

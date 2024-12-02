@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.974" />
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/patientNavBar"
         android:layout_width="0dp"
