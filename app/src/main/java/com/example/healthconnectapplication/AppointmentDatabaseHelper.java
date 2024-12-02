@@ -139,6 +139,31 @@ public class AppointmentDatabaseHelper extends SQLiteOpenHelper {
 
         return rowsAffected > 0;
     }
+    public boolean isAppointmentExists(int patientId, int doctorId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_PATIENT_ID + " = ? AND " + COLUMN_DOCTOR_ID + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(patientId), String.valueOf(doctorId)});
+        boolean exists = cursor.moveToFirst();
+        cursor.close();
+        return exists;
+    }
+
+    public boolean insertAppointmentDetails(int patientId,String patientEmail, int doctorId,String doctorEmail, String firstName, String lastName, String appointmentDate,String diagnosis,String treatment,String medication) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PATIENT_ID, patientId);
+        values.put(COLUMN_PATIENT_EMAIL, patientEmail);
+        values.put(COLUMN_DOCTOR_ID, doctorId);
+        values.put(COLUMN_DOCTOR_EMAIL, doctorEmail);
+        values.put(COLUMN_FIRST_NAME, firstName);
+        values.put(COLUMN_LAST_NAME, lastName);
+        values.put(COLUMN_APPOINTMENT_DATE, appointmentDate);
+        values.put(COLUMN_DIAGNOSIS, diagnosis);
+        values.put(COLUMN_TREATMENT, treatment);
+        values.put(COLUMN_MEDICATION, medication);
+        long result = db.insert(TABLE_NAME, null, values);
+        return result != -1;
+    }
 
 
 

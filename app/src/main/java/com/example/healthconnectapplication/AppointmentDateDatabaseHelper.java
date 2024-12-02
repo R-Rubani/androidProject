@@ -112,5 +112,26 @@ public class AppointmentDateDatabaseHelper extends SQLiteOpenHelper {
         return appointmentDates;
     }
 
+    public boolean isAppointmentDateExists(String appointmentDate) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Query to check if the appointment date already exists in the table
+        String query = "SELECT COUNT(*) FROM " + TABLE_APPOINTMENT_DATE +
+                " WHERE " + COLUMN_APPOINTMENT_DATE + " = ?";
+
+        // Execute the query with the appointmentDate as a parameter
+        Cursor cursor = db.rawQuery(query, new String[]{appointmentDate});
+
+        boolean exists = false;
+        if (cursor != null && cursor.moveToFirst()) {
+            // If count is greater than 0, the appointment date exists
+            int count = cursor.getInt(0);
+            exists = count > 0;
+            cursor.close();
+        }
+
+        return exists;
+    }
+
 
 }

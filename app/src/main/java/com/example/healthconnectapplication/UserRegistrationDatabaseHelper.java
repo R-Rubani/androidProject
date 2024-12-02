@@ -69,8 +69,7 @@ public class UserRegistrationDatabaseHelper extends SQLiteOpenHelper {
 
     public boolean updateRecord(
             String patientEmail,
-            String phone)
-    {
+            String phone) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_PHONE, phone);
@@ -81,6 +80,7 @@ public class UserRegistrationDatabaseHelper extends SQLiteOpenHelper {
 
         return rowsAffected > 0;
     }
+
     public boolean isPatientEmailExists(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT " + COLUMN_ID + " FROM " + TABLE_NAME + " WHERE " + COLUMN_EMAIL + " = ?";
@@ -108,6 +108,7 @@ public class UserRegistrationDatabaseHelper extends SQLiteOpenHelper {
         }
         return null;
     }
+
     public String getEmailByPatientId(int patientId) {
         SQLiteDatabase db = this.getReadableDatabase();
         String email = null;
@@ -128,5 +129,15 @@ public class UserRegistrationDatabaseHelper extends SQLiteOpenHelper {
         if (cursor != null && !cursor.isClosed()) {
             cursor.close();
         }
+    }
+
+    public boolean isPatientExists(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_EMAIL + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{email});
+        boolean exists = cursor.moveToFirst();
+        cursor.close();
+        return exists;
+
     }
 }
