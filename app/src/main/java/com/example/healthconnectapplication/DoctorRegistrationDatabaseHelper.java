@@ -38,8 +38,7 @@ public class DoctorRegistrationDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion < 4) {
-            // Upgrade to version 4: Add 'phone' and 'dateOfBirth' columns if missing
-            // Adding 'phone' column
+
             String ALTER_TABLE = "ALTER TABLE " + TABLE_NAME + " ADD COLUMN " + COLUMN_PHONE + " TEXT;";
             db.execSQL(ALTER_TABLE);
 
@@ -61,10 +60,7 @@ public class DoctorRegistrationDatabaseHelper extends SQLiteOpenHelper {
         // Insert the values into the table
         long result = db.insert(TABLE_NAME, null, values);
 
-        // Close the database after insertion to free up resources
-//        db.close();
 
-        // If the insert is successful, result will not be -1
         return result != -1;
     }
 

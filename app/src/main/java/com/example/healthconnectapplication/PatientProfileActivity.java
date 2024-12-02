@@ -23,7 +23,6 @@ public class PatientProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_profile);
 
-        // Initialize FirebaseAuthUtils and UserRegistrationDatabaseHelper
         mAuthUtils = new FirebaseAuthUtils();
         dbHelper = new UserRegistrationDatabaseHelper(this);
 
@@ -34,10 +33,8 @@ public class PatientProfileActivity extends AppCompatActivity {
         textViewDOB = findViewById(R.id.textViewDOB);
         buttonLogOut = findViewById(R.id.buttonLogOut);
 
-        // Load user details
         loadPatientDetails();
 
-        // Handle logout button click
         buttonLogOut.setOnClickListener(view -> {
             mAuthUtils.signOut();
             Toast.makeText(this, "Logged out successfully.", Toast.LENGTH_SHORT).show();

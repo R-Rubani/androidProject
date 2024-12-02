@@ -135,7 +135,6 @@ public class Appointment implements Parcelable {
                 "Medication: " + medication;
     }
 
-    // Parcelable implementation
     protected Appointment(Parcel in) {
         appointmentId = in.readInt();
         patientId = in.readString();

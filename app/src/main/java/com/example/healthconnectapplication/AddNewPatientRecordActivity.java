@@ -150,7 +150,7 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
         // Show a success message and navigate back to the patient records activity
         Toast.makeText(AddNewPatientRecordActivity.this, "Record added successfully", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(AddNewPatientRecordActivity.this, PatientRecordsActivity.class));
-        finish(); // Close activity after adding the record
+        finish();
     }
 
     private boolean isPatientIDValid(String patientID) {
@@ -176,9 +176,9 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
         values.put(AppointmentDatabaseHelper.COLUMN_DIAGNOSIS, diagnosis);
         values.put(AppointmentDatabaseHelper.COLUMN_TREATMENT, treatment);
         values.put(AppointmentDatabaseHelper.COLUMN_MEDICATION, medication);
-        values.put(AppointmentDatabaseHelper.COLUMN_DOCTOR_ID, doctorID); // Save the doctor ID
-        values.put(AppointmentDatabaseHelper.COLUMN_DOCTOR_EMAIL, docEmail); // Save the doctor ID
-        values.put(AppointmentDatabaseHelper.COLUMN_PATIENT_EMAIL, patientEmail); // Save the doctor ID
+        values.put(AppointmentDatabaseHelper.COLUMN_DOCTOR_ID, doctorID);
+        values.put(AppointmentDatabaseHelper.COLUMN_DOCTOR_EMAIL, docEmail);
+        values.put(AppointmentDatabaseHelper.COLUMN_PATIENT_EMAIL, patientEmail);
 
         // Insert the record into the database
         long newRowId = db.insert(AppointmentDatabaseHelper.TABLE_NAME, null, values);

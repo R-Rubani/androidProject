@@ -49,8 +49,8 @@ public class AppointmentDateDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(SQL_DELETE_APPOINTMENT_DATE_TABLE); // Drop the AppointmentDate table if it exists
-        onCreate(db); // Create a new one
+        db.execSQL(SQL_DELETE_APPOINTMENT_DATE_TABLE);
+        onCreate(db);
     }
     public void addAppointmentDate(String patientId, String patientEmail, String firstName, String lastName, String appointmentDate) {
         SQLiteDatabase db = this.getWritableDatabase();
