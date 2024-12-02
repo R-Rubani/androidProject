@@ -62,48 +62,35 @@ public class AppointmentDatabaseHelper extends SQLiteOpenHelper {
         onCreate(db); // Create a new one
     }
 
-    public List<Appointment> getAppointmentsByPatientEmail(String email) {
+    public List<Appointment> getAllAppointments() {
         List<Appointment> appointments = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM appointments WHERE patient_email = ?";
-        Cursor cursor = db.rawQuery(query, new String[]{email});
-        String[] columnNames = cursor.getColumnNames();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
 
         if (cursor.moveToFirst()) {
             do {
-                appointments.add(new Appointment(
-                        cursor.getInt(cursor.getColumnIndex(COLUMN_APPOINTMENT_ID)),
-                        cursor.getString(cursor.getColumnIndex(COLUMN_FIRST_NAME))+" "
-                                + cursor.getString(cursor.getColumnIndex(COLUMN_LAST_NAME)),
-                        cursor.getString(cursor.getColumnIndex(COLUMN_APPOINTMENT_DATE)),
-                        cursor.getString(cursor.getColumnIndex(COLUMN_DIAGNOSIS)),
-                        cursor.getString(cursor.getColumnIndex(COLUMN_TREATMENT))
-                ));
+                Appointment appointment = new Appointment(
+                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_APPOINTMENT_ID)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PATIENT_ID)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PATIENT_EMAIL)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DOCTOR_ID)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DOCTOR_EMAIL)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FIRST_NAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LAST_NAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_APPOINTMENT_DATE)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DIAGNOSIS)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TREATMENT)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_MEDICATION))
+                );
+                appointments.add(appointment);
             } while (cursor.moveToNext());
         }
         cursor.close();
         return appointments;
     }
 
-    public List<Appointment> getAppointmentsByDoctorEmail(String email) {
-        List<Appointment> appointments = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM appointments WHERE doctor_email = ?";
-        Cursor cursor = db.rawQuery(query, new String[]{email});
 
-        if (cursor.moveToFirst()) {
-            do {
-                appointments.add(new Appointment(
-                        cursor.getInt(cursor.getColumnIndex("id")),
-                        cursor.getString(cursor.getColumnIndex("patient_name")),
-                        cursor.getString(cursor.getColumnIndex("appointment_date")),
-                        cursor.getString(cursor.getColumnIndex("diagnosis")),
-                        cursor.getString(cursor.getColumnIndex("treatment"))
-                ));
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        return appointments;
-    }
+
+
 
 }
