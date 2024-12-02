@@ -3,36 +3,47 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
+    android:background="@color/secondaryBlue"
+    android:backgroundTint="@color/secondaryBlue"
     android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_blue_frames"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/patientIdTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Patient ID" />
-
-        <TextView
-            android:id="@+id/firstNameTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="First Name" />
-
-        <TextView
-            android:id="@+id/lastNameTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Last Name" />
+            android:text="Patient ID"
+            android:textColor="@color/secondaryBlue" />
 
         <TextView
             android:id="@+id/appointmentDateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Appointment Date" />
+            android:text="Appointment Date"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/firstNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First Name"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/lastNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last Name"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
     </LinearLayout>
 

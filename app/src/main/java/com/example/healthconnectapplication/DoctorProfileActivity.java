@@ -59,6 +59,7 @@ public class DoctorProfileActivity extends AppCompatActivity {
         buttonLogOut.setOnClickListener(view -> {
             authUtils.signOut();
             Toast.makeText(this, "Logged out successfully.", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(DoctorProfileActivity.this,WelcomeActivity.class));
             finish(); // Close the activity
         });
     }

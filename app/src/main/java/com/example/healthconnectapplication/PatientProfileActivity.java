@@ -42,6 +42,7 @@ public class PatientProfileActivity extends AppCompatActivity {
         buttonLogOut.setOnClickListener(view -> {
             mAuthUtils.signOut();
             Toast.makeText(this, "Logged out successfully.", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(PatientProfileActivity.this,WelcomeActivity.class));
             finish(); // Close the activity
         });
 
@@ -89,9 +90,7 @@ public class PatientProfileActivity extends AppCompatActivity {
     public void openPatientProfile(MenuItem item) {
         startActivity(new Intent(PatientProfileActivity.this, PatientProfileActivity.class));
     }
-    public void openPatientAppointments(MenuItem item) {
-        startActivity(new Intent(PatientProfileActivity.this, PatientAppointmentsActivity.class));
-    }
+
     public void openMedicalHistory(MenuItem item) {
         startActivity(new Intent(PatientProfileActivity.this, MedicalHistoryActivity.class));
     }

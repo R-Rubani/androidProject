@@ -55,15 +55,13 @@
         android:id="@+id/imageButtonAddNewRecord"
         android:layout_width="55dp"
         android:layout_height="51dp"
-        android:layout_marginStart="357dp"
-        android:layout_marginBottom="36dp"
         android:backgroundTint="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/docNavBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.851"
         app:layout_constraintStart_toStartOf="@+id/recyclerViewPatientRecords"
         app:layout_constraintTop_toTopOf="@+id/recyclerViewPatientRecords"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.886"
         app:srcCompat="@drawable/icon_patient_profile"
         app:tint="@color/white" />
 

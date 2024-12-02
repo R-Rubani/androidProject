@@ -54,14 +54,11 @@ public class RegisterActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.editTextPassword);
         editTextDate = findViewById(R.id.editTextDate);
         buttonRegister = findViewById(R.id.buttonRegister);
-        tvClickToLogin = findViewById(R.id.tvClickToLogin);
+        //tvClickToLogin = findViewById(R.id.tvClickToLogin);
 
         // Set onClick listener for the register button
         buttonRegister.setOnClickListener(v -> registerUser());
 
-        tvClickToLogin.setOnClickListener(v -> {
-            Toast.makeText(RegisterActivity.this, "Login navigation clicked!", Toast.LENGTH_SHORT).show();
-        });
 
         editTextDate.setOnClickListener(new View.OnClickListener() {
             @Override

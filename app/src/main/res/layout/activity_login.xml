@@ -79,25 +79,6 @@
         app:layout_constraintVertical_bias="0.051" />
 
     <TextView
-        android:id="@+id/tvClickToRegister"
-        android:layout_width="264dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="48dp"
-        android:clickable="true"
-        android:text="@string/tvClickToRegister"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
-        app:layout_constraintVertical_bias="0.967" />
-
-    <TextView
         android:id="@+id/tvLoginHeading"
         android:layout_width="286dp"
         android:layout_height="82dp"
@@ -118,17 +99,14 @@
         android:layout_width="239dp"
         android:layout_height="69dp"
         android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
         android:background="@drawable/rounded_blue_frames"
         android:fontFamily="@font/montserrat"
         android:text="@string/buttonLogin"
         android:textColor="@color/white"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/tvClickToRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
