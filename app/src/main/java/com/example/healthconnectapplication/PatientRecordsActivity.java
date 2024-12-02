@@ -22,7 +22,6 @@ import java.util.Locale;
 public class PatientRecordsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewPatientRecords;
-    private AppointmentAdapter appointmentAdapter; // Create an adapter for the RecyclerView
     private AppointmentDatabaseHelper dbHelper;
     private EditText editTextAppointmentDate;
 
@@ -88,39 +87,29 @@ public class PatientRecordsActivity extends AppCompatActivity {
         }
 
         // Fetch and display data based on user type
-        if (userType.equals("doctor")) {
-            fetchDoctorAppointments(userEmail);
-        } else if (userType.equals("patient")) {
-            fetchPatientAppointments(userEmail);
-        } else {
-            Toast.makeText(this, "Invalid user type. Please log in again.", Toast.LENGTH_SHORT).show();
-            finish();
-        }
 
+        recyclerViewPatientRecords = findViewById(R.id.recyclerViewPatientRecords);
+        recyclerViewPatientRecords.setLayoutManager(new LinearLayoutManager(this));
+
+        // Initialize the database helper
+        dbHelper = new AppointmentDatabaseHelper(this);
+
+        // Fetch appointments from the database
+        List<Appointment> appointments = dbHelper.getAllAppointments();
+
+        // Display appointments in the RecyclerView
+        if (appointments.isEmpty()) {
+            Toast.makeText(this, "No appointments found.", Toast.LENGTH_SHORT).show();
+        } else {
+            AppointmentAdapter adapter = new AppointmentAdapter(appointments);
+            recyclerViewPatientRecords.setAdapter(adapter);
+        }
     }
     // Fetch appointments for a doctor using their email
-    private void fetchDoctorAppointments(String email) {
-        List<Appointment> appointments = dbHelper.getAppointmentsByDoctorEmail(email);
 
-        if (appointments.isEmpty()) {
-            Toast.makeText(this, "No appointments found for the logged-in doctor.", Toast.LENGTH_SHORT).show();
-        } else {
-            appointmentAdapter = new AppointmentAdapter(this, appointments);
-            recyclerViewPatientRecords.setAdapter(appointmentAdapter);
-        }
-    }
 
     // Fetch appointments for a patient using their email
-    private void fetchPatientAppointments(String email) {
-        List<Appointment> appointments = dbHelper.getAppointmentsByPatientEmail(email);
 
-        if (appointments.isEmpty()) {
-            Toast.makeText(this, "No appointments found for the logged-in patient.", Toast.LENGTH_SHORT).show();
-        } else {
-            appointmentAdapter = new AppointmentAdapter(this, appointments);
-            recyclerViewPatientRecords.setAdapter(appointmentAdapter);
-        }
-    }
 
     //bottom Navigation methods
     public void openDocProfile(MenuItem item) {

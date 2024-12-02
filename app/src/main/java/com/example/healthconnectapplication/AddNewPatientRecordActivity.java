@@ -35,7 +35,7 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
     private UserRegistrationDatabaseHelper uDbHelper;
     private DoctorRegistrationDatabaseHelper dDbHelper;
     private int docId;
-    private String doctorId;
+    private String doctorId,docEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,9 +126,9 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
             Toast.makeText(AddNewPatientRecordActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             return;
         }
-
+        docEmail = fbAuth.getLoggedInUserEmail();
         // Get the doctor ID
-        docId = getDocId(fbAuth.getLoggedInUserEmail());
+        docId = getDocId(docEmail);
         if (docId == -1) {
             Toast.makeText(this, "No doctor found with this email. Please check your login status.", Toast.LENGTH_SHORT).show();
             return;
@@ -174,6 +174,8 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
         values.put(AppointmentDatabaseHelper.COLUMN_DIAGNOSIS, diagnosis);
         values.put(AppointmentDatabaseHelper.COLUMN_TREATMENT, treatment);
         values.put(AppointmentDatabaseHelper.COLUMN_MEDICATION, medication);
+        values.put(AppointmentDatabaseHelper.COLUMN_DOCTOR_ID, doctorID); // Save the doctor ID
+        values.put(AppointmentDatabaseHelper.COLUMN_DOCTOR_ID, docEmail); // Save the doctor ID
         values.put(AppointmentDatabaseHelper.COLUMN_DOCTOR_ID, doctorID); // Save the doctor ID
 
         // Insert the record into the database
