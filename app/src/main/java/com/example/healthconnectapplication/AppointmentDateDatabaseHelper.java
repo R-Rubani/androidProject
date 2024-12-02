@@ -91,6 +91,26 @@ public class AppointmentDateDatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return appointmentDates;
     }
+    public List<AppointmentDate> getAllAppointments() {
+        List<AppointmentDate> appointmentDates = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_APPOINTMENT_DATE, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                AppointmentDate appointment = new AppointmentDate(
+                         cursor.getString(cursor.getColumnIndex(COLUMN_PATIENT_ID)),
+                        cursor.getString(cursor.getColumnIndex(COLUMN_PATIENT_EMAIL)),
+                        cursor.getString(cursor.getColumnIndex(COLUMN_FIRST_NAME)),
+                        cursor.getString(cursor.getColumnIndex(COLUMN_LAST_NAME)),
+                        cursor.getString(cursor.getColumnIndex(COLUMN_APPOINTMENT_DATE))
+                );
+                appointmentDates.add(appointment);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return appointmentDates;
+    }
 
 
 }

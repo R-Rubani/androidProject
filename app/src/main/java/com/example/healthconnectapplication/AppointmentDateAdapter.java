@@ -49,5 +49,6 @@ public class AppointmentDateAdapter extends RecyclerView.Adapter<AppointmentDate
             lastNameTextView = itemView.findViewById(R.id.lastNameTextView);
             appointmentDateTextView = itemView.findViewById(R.id.appointmentDateTextView);
         }
+
     }
 }

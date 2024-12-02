@@ -40,7 +40,7 @@ public class PatientRecordsActivity extends AppCompatActivity {
 //            getSupportActionBar().setLogo(R.mipmap.ic_launcher);
             getSupportActionBar().setDisplayUseLogoEnabled(true);
         }
-        
+
         ImageButton addNewRecord = findViewById(R.id.imageButtonAddNewRecord);
         addNewRecord.setOnClickListener(new View.OnClickListener() {
             @Override

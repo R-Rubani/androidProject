@@ -9,10 +9,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
 public class DoctorProfileActivity extends AppCompatActivity {
 
     private FirebaseAuthUtils authUtils;
     private DoctorRegistrationDatabaseHelper doctorDbHelper;
+    private AppointmentDateDatabaseHelper appointmentDateDbHelper;
 
     private TextView textViewDoctorName, textViewEmailAddress, textViewContactNumber, textViewDOB;
     private Button buttonLogOut;
@@ -21,11 +27,13 @@ public class DoctorProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_profile);
+        appointmentDateDbHelper = new AppointmentDateDatabaseHelper(this);
 
         // Initialize Firebase Auth Utils and database helper
         authUtils = new FirebaseAuthUtils();
         doctorDbHelper = new DoctorRegistrationDatabaseHelper(this);
-
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        String currentDate = formatter.format(new Date());
         // Initialize UI components
         textViewDoctorName = findViewById(R.id.textViewDoctorName);
         textViewEmailAddress = findViewById(R.id.textViewEmailAddress);
@@ -40,7 +48,14 @@ public class DoctorProfileActivity extends AppCompatActivity {
         }
 
         loadDoctorDetails();
-
+        List<AppointmentDate> appointmentDates = appointmentDateDbHelper.getAllAppointments();
+        for (AppointmentDate appointment : appointmentDates) {
+            if (appointment.getAppointmentDate().equals(currentDate)) {
+                // Show a toast if the appointment date matches the current date
+                Toast.makeText(this, "REMINDER!!!  Please check your appointment for today.", Toast.LENGTH_LONG).show();
+                break;  // Exit loop after the first match is found
+            }
+        }
         buttonLogOut.setOnClickListener(view -> {
             authUtils.signOut();
             Toast.makeText(this, "Logged out successfully.", Toast.LENGTH_SHORT).show();
