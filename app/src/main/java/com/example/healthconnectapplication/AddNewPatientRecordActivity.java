@@ -2,6 +2,7 @@ package com.example.healthconnectapplication;
 
 import static java.lang.Integer.parseInt;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,6 +18,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class AddNewPatientRecordActivity extends AppCompatActivity {
 
@@ -61,6 +66,28 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
         dbHelper = new AppointmentDatabaseHelper(this);
         dDbHelper = new DoctorRegistrationDatabaseHelper(this);
         uDbHelper = new UserRegistrationDatabaseHelper(this);
+
+        editTextAppointmentDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
+                DatePickerDialog datePickerDialog = new DatePickerDialog(AddNewPatientRecordActivity.this, (view, year, month, dayOfMonth) ->
+                {
+                    // Format selected date and set it to TextView
+                    calendar.set(year, month, dayOfMonth);
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+                    String selectedDate = sdf.format(calendar.getTime());
+                    editTextAppointmentDate.setText(selectedDate);
+                },
+                        calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)
+                );
+
+                datePickerDialog.show();
+            }
+        });
+
 
         // Set onClickListener for the "Add Record" button
         imageBtnAddRecord.setOnClickListener(new View.OnClickListener() {

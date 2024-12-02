@@ -85,7 +85,7 @@
         android:background="@drawable/rounded_buttons"
         android:ems="10"
         android:hint="@string/editTextAppointmentDate"
-        android:inputType="datetime"
+        android:inputType="datetime|date"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textColorHint="@color/primaryBlue"

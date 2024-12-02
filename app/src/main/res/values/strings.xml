@@ -64,6 +64,7 @@
     <string name="tvTreatment" />
     <string name="tvRecordsHeading">Patient Records</string>
     <string name="buttonLogOut">Log Out</string>
+    <string name="tvMedicalHistory">MedicalHistory</string>
 
 
 </resources>

@@ -1,5 +1,6 @@
 package com.example.healthconnectapplication;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -57,6 +62,27 @@ public class RegisterActivity extends AppCompatActivity {
         // Optional: Handle "Click to Login" text if you want navigation
         tvClickToLogin.setOnClickListener(v -> {
             Toast.makeText(RegisterActivity.this, "Login navigation clicked!", Toast.LENGTH_SHORT).show();
+        });
+
+        editTextDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
+                DatePickerDialog datePickerDialog = new DatePickerDialog(RegisterActivity.this, (view,year, month, dayOfMonth) ->
+                        {
+                            // Format selected date and set it to TextView
+                            calendar.set(year, month, dayOfMonth);
+                            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+                            String selectedDate = sdf.format(calendar.getTime());
+                            editTextDate.setText(selectedDate);
+                        },
+                        calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)
+                );
+
+                datePickerDialog.show();
+            }
         });
     }
 

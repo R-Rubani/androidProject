@@ -4,32 +4,64 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class PatientRecordsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewPatientRecords;
     private AppointmentAdapter appointmentAdapter; // Create an adapter for the RecyclerView
     private AppointmentDatabaseHelper dbHelper;
+    private EditText editTextAppointmentDate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_records);
 
+      editTextAppointmentDate = findViewById(R.id.editTextApptDate);
+
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setLogo(R.mipmap.ic_launcher);
             getSupportActionBar().setDisplayUseLogoEnabled(true);
         }
+
+        editTextAppointmentDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PatientRecordsActivity.this, (view, year, month, dayOfMonth) ->
+                {
+                    // Format selected date and set it to TextView
+                    calendar.set(year, month, dayOfMonth);
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+                    String selectedDate = sdf.format(calendar.getTime());
+                    editTextAppointmentDate.setText(selectedDate);
+                },
+                        calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)
+                );
+
+                datePickerDialog.show();
+            }
+        });
+
 
         ImageButton addNewRecord = findViewById(R.id.imageButtonAddNewRecord);
         addNewRecord.setOnClickListener(new View.OnClickListener() {
