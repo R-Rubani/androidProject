@@ -23,15 +23,12 @@ public class PatientRecordsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewPatientRecords;
     private AppointmentDatabaseHelper dbHelper;
-    private EditText editTextAppointmentDate;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_records);
 
-      editTextAppointmentDate = findViewById(R.id.editTextApptDate);
 
 
         if (getSupportActionBar() != null) {
@@ -39,27 +36,6 @@ public class PatientRecordsActivity extends AppCompatActivity {
             getSupportActionBar().setLogo(R.mipmap.ic_launcher);
             getSupportActionBar().setDisplayUseLogoEnabled(true);
         }
-
-        editTextAppointmentDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar calendar = Calendar.getInstance();
-                DatePickerDialog datePickerDialog = new DatePickerDialog(PatientRecordsActivity.this, (view, year, month, dayOfMonth) ->
-                {
-                    // Format selected date and set it to TextView
-                    calendar.set(year, month, dayOfMonth);
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-                    String selectedDate = sdf.format(calendar.getTime());
-                    editTextAppointmentDate.setText(selectedDate);
-                },
-                        calendar.get(Calendar.YEAR),
-                        calendar.get(Calendar.MONTH),
-                        calendar.get(Calendar.DAY_OF_MONTH)
-                );
-
-                datePickerDialog.show();
-            }
-        });
 
 
         ImageButton addNewRecord = findViewById(R.id.imageButtonAddNewRecord);
