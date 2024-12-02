@@ -101,15 +101,15 @@ public class PatientRecordsActivity extends AppCompatActivity {
         if (appointments.isEmpty()) {
             Toast.makeText(this, "No appointments found.", Toast.LENGTH_SHORT).show();
         } else {
-            AppointmentAdapter adapter = new AppointmentAdapter(appointments);
+            AppointmentAdapter adapter = new AppointmentAdapter(appointments,this);
             recyclerViewPatientRecords.setAdapter(adapter);
         }
     }
-    // Fetch appointments for a doctor using their email
 
 
-    // Fetch appointments for a patient using their email
-
+    public void editRecord(View view){
+        startActivity(new Intent(PatientRecordsActivity.this, EditRecordActivity.class));
+    }
 
     //bottom Navigation methods
     public void openDocProfile(MenuItem item) {

@@ -51,7 +51,7 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
         if (appointments.isEmpty()) {
             Toast.makeText(this, "No appointments found.", Toast.LENGTH_SHORT).show();
         } else {
-            AppointmentAdapter adapter = new AppointmentAdapter(appointments);
+            AppointmentAdapter adapter = new AppointmentAdapter(appointments,this);
             recyclerViewAppointmentDetails.setAdapter(adapter);
         }
     }

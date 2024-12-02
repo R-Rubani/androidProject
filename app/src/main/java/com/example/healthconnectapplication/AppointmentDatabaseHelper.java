@@ -1,5 +1,6 @@
 package com.example.healthconnectapplication;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -117,6 +118,26 @@ public class AppointmentDatabaseHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         return appointments;
+    }
+
+    public boolean updateRecord(
+            int appointmentId,
+            String diagnosis,
+            String treatment,
+            String medication)
+    {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_DIAGNOSIS, diagnosis);
+        values.put(COLUMN_TREATMENT, treatment);
+        values.put(COLUMN_MEDICATION, medication);
+
+        // Update the row and check the number of rows affected
+        int rowsAffected = db.update(TABLE_NAME, values, COLUMN_APPOINTMENT_ID + " = ?",
+                new String[]{String.valueOf(appointmentId)});
+
+        return rowsAffected > 0;
     }
 
 

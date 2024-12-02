@@ -18,7 +18,7 @@
 
 
     <string name="tvLoginHeading">Login</string>
-    <string name="tvRegisterHeading">Register Patient</string>
+    <string name="tvRegisterHeading">Register</string>
     <string name="buttonLogin">Login</string>
     <string name="buttonRegister">Register</string>
     <string name="tvClickToRegister">Not Registered Yet? Click here.</string>
@@ -63,8 +63,15 @@
     <string name="tvDiagnosis" />
     <string name="tvTreatment" />
     <string name="tvRecordsHeading">Patient Records</string>
+
+
     <string name="buttonLogOut">Log Out</string>
     <string name="tvMedicalHistory">MedicalHistory</string>
+
+    <string name="buttonEditRecord">Edit Record</string>
+    <string name="tvEditRecord">Edit Record</string>
+    <string name="buttonSaveChanges">Save Changes</string>
+    <string name="tvMedication" />
 
 
 </resources>
