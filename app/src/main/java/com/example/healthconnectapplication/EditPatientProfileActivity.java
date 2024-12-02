@@ -68,9 +68,7 @@ public class EditPatientProfileActivity extends AppCompatActivity {
     public void openPatientProfile(MenuItem item) {
         startActivity(new Intent(EditPatientProfileActivity.this, PatientProfileActivity.class));
     }
-    public void openPatientAppointments(MenuItem item) {
-        startActivity(new Intent(EditPatientProfileActivity.this, PatientAppointmentsActivity.class));
-    }
+
     public void openMedicalHistory(MenuItem item) {
         startActivity(new Intent(EditPatientProfileActivity.this, MedicalHistoryActivity.class));
     }

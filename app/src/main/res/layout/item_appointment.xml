@@ -10,8 +10,8 @@
 
     <LinearLayout
         android:id="@+id/linearlay"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@drawable/rounded_blue_frames"
         android:orientation="vertical"
         android:padding="16dp">

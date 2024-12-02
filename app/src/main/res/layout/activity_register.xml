@@ -93,23 +93,6 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/tvClickToLogin"
-        android:layout_width="300dp"
-        android:layout_height="22dp"
-        android:clickable="true"
-        android:text="@string/tvClickToLogin"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonRegister"
-        app:layout_constraintVertical_bias="0.058" />
-
     <EditText
         android:id="@+id/editTextFirstName"
         android:layout_width="150dp"

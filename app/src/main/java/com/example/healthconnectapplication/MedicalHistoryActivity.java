@@ -20,7 +20,7 @@ import java.util.Locale;
 
 public class MedicalHistoryActivity extends AppCompatActivity {
 
-    EditText editTextAppointmentDate;
+
     private TextView textViewAppointments;
     public static final String USER_EMAIL_KEY = "userEmail";
     private AppointmentDatabaseHelper appointmentDbHelper;
@@ -52,25 +52,6 @@ public class MedicalHistoryActivity extends AppCompatActivity {
             getSupportActionBar().setLogo(R.mipmap.ic_launcher);
             getSupportActionBar().setDisplayUseLogoEnabled(true);
         }
-
-        // Setup DatePicker for appointment date
-        editTextAppointmentDate = findViewById(R.id.editTextApptDate);
-        editTextAppointmentDate.setOnClickListener(v -> {
-            Calendar calendar = Calendar.getInstance();
-            DatePickerDialog datePickerDialog = new DatePickerDialog(MedicalHistoryActivity.this, (view, year, month, dayOfMonth) -> {
-                // Format selected date and set it to TextView
-                calendar.set(year, month, dayOfMonth);
-                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-                String selectedDate = sdf.format(calendar.getTime());
-                editTextAppointmentDate.setText(selectedDate);
-            },
-                    calendar.get(Calendar.YEAR),
-                    calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DAY_OF_MONTH)
-            );
-
-            datePickerDialog.show();
-        });
     }
 
     // Method to fetch appointments from the database based on email
@@ -100,9 +81,6 @@ public class MedicalHistoryActivity extends AppCompatActivity {
         startActivity(new Intent(MedicalHistoryActivity.this, PatientProfileActivity.class));
     }
 
-    public void openPatientAppointments(MenuItem item) {
-        startActivity(new Intent(MedicalHistoryActivity.this, PatientAppointmentsActivity.class));
-    }
 
     public void openMedicalHistory(MenuItem item) {
         startActivity(new Intent(MedicalHistoryActivity.this, MedicalHistoryActivity.class));

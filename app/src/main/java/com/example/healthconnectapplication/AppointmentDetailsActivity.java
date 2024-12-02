@@ -5,10 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -17,7 +15,7 @@ import java.util.List;
 public class AppointmentDetailsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewAppointmentDetails;
-    private AppointmentDatabaseHelper dbHelper;
+    private AppointmentDateDatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +28,7 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayUseLogoEnabled(true);
         }
 
+        // Add appointment button
         ImageButton addAppointment = findViewById(R.id.imageButtonAddAppointment);
         addAppointment.setOnClickListener(v ->
                 startActivity(new Intent(AppointmentDetailsActivity.this, NewAppointmentActivity.class))
@@ -40,16 +39,16 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
         recyclerViewAppointmentDetails.setLayoutManager(new LinearLayoutManager(this));
 
         // Initialize the database helper
-        dbHelper = new AppointmentDatabaseHelper(this);
+        dbHelper = new AppointmentDateDatabaseHelper(this);
 
-        // Fetch appointments from the database
-        List<Appointment> appointments = dbHelper.getAllAppointments();
+        // Fetch appointment dates from the database
+        List<AppointmentDate> appointmentDateList = dbHelper.getAllAppointments();
 
-        // Display appointments in the RecyclerView
-        if (appointments.isEmpty()) {
+        // Display appointment dates in the RecyclerView
+        if (appointmentDateList.isEmpty()) {
             Toast.makeText(this, "No appointments found.", Toast.LENGTH_SHORT).show();
         } else {
-            AppointmentAdapter adapter = new AppointmentAdapter(appointments,this);
+            AppointmentDateAdapter adapter = new AppointmentDateAdapter(appointmentDateList);
             recyclerViewAppointmentDetails.setAdapter(adapter);
         }
     }

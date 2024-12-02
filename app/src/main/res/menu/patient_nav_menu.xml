@@ -8,14 +8,14 @@
         android:onClick="openPatientProfile"
         android:visible="true"
         />
-    <item
-        android:title="@string/iconPatientAppointments"
-        android:icon="@drawable/icon_appointments"
-        android:id="@+id/navToPatientAppointments"
-        android:onClick="openPatientAppointments"
-        android:visible="true"
+<!--    <item-->
+<!--        android:title="@string/iconPatientAppointments"-->
+<!--        android:icon="@drawable/icon_appointments"-->
+<!--        android:id="@+id/navToPatientAppointments"-->
+<!--        android:onClick="openPatientAppointments"-->
+<!--        android:visible="true"-->
 
-        />
+<!--        />-->
     <item
         android:title="@string/iconMedicalHistory"
         android:icon="@drawable/icon_patient_records"
