@@ -39,10 +39,8 @@ public class DoctorProfileActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayUseLogoEnabled(true);
         }
 
-        // Load user details
         loadDoctorDetails();
 
-        // Handle logout button click
         buttonLogOut.setOnClickListener(view -> {
             authUtils.signOut();
             Toast.makeText(this, "Logged out successfully.", Toast.LENGTH_SHORT).show();

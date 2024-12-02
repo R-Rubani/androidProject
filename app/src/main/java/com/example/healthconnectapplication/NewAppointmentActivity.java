@@ -72,7 +72,7 @@ public class NewAppointmentActivity extends AppCompatActivity {
         // Initialize the database helper
         dbHelper = new AppointmentDateDatabaseHelper(this);
 
-        // Set click listener for the add record button
+
         imageBtnAddRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

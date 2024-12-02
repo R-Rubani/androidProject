@@ -36,10 +36,8 @@ public class MainActivity extends AppCompatActivity {
         buttonAsPatient = findViewById(R.id.buttonAsPatient);
         buttonAsAdmin = findViewById(R.id.buttonAsAdmin); // Initialize Admin button
 
-        // Initially set the admin button as invisible
         buttonAsAdmin.setVisibility(View.INVISIBLE);
 
-        // Set up click listeners for the buttons to store the user type
         buttonAsDoctor.setOnClickListener(v -> {
             storeUserType("doctor");
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
@@ -58,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         buttonAsDoctor.setOnLongClickListener(v -> {
             buttonAsAdmin.setVisibility(View.VISIBLE);
             Toast.makeText(MainActivity.this, "Admin button is now visible", Toast.LENGTH_SHORT).show();
-            return true; // Indicates that the long press event is handled
+            return true;
         });
 
         buttonAsAdmin.setOnClickListener(v -> {
@@ -68,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        // Clear SharedPreferences on restart (Optional for debugging)
+
         clearUserType();
     }
 
@@ -82,14 +80,7 @@ public class MainActivity extends AppCompatActivity {
         editor.apply(); // Save the preference
     }
 
-    /**
-     * Navigate to the user-specific activity based on the user type.
-     */
 
-
-    /**
-     * Optional: Clear user type from SharedPreferences (for debugging or reset functionality).
-     */
     private void clearUserType() {
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

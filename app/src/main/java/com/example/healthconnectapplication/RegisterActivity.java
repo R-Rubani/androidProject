@@ -59,7 +59,6 @@ public class RegisterActivity extends AppCompatActivity {
         // Set onClick listener for the register button
         buttonRegister.setOnClickListener(v -> registerUser());
 
-        // Optional: Handle "Click to Login" text if you want navigation
         tvClickToLogin.setOnClickListener(v -> {
             Toast.makeText(RegisterActivity.this, "Login navigation clicked!", Toast.LENGTH_SHORT).show();
         });
@@ -126,7 +125,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                         // Show appropriate message
                         if (isInserted) {
-                            Toast.makeText(RegisterActivity.this, userType + " registered successfully!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this,  " registered successfully!", Toast.LENGTH_SHORT).show();
                             clearFields();
                         } else {
                             Toast.makeText(RegisterActivity.this, "Registration failed. Try again.", Toast.LENGTH_SHORT).show();

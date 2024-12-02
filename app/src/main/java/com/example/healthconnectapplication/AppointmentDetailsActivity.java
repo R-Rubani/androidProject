@@ -24,14 +24,12 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment_details);
 
-        // Set the app's logo in the action bar
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setLogo(R.mipmap.ic_launcher);
             getSupportActionBar().setDisplayUseLogoEnabled(true);
         }
 
-        // Initialize the "Add Appointment" button
         ImageButton addAppointment = findViewById(R.id.imageButtonAddAppointment);
         addAppointment.setOnClickListener(v ->
                 startActivity(new Intent(AppointmentDetailsActivity.this, NewAppointmentActivity.class))
