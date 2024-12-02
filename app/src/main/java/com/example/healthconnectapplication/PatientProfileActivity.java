@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +18,8 @@ public class PatientProfileActivity extends AppCompatActivity {
 
     private TextView textViewPatientName, textViewEmailAddress, textViewContactNumber, textViewDOB;
     private Button buttonLogOut;
+    private Button buttonEditProfile;
+    private String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class PatientProfileActivity extends AppCompatActivity {
         textViewContactNumber = findViewById(R.id.textViewContactNumber);
         textViewDOB = findViewById(R.id.textViewDOB);
         buttonLogOut = findViewById(R.id.buttonLogOut);
+        buttonEditProfile = findViewById(R.id.buttonEditProfile);
 
         loadPatientDetails();
 
@@ -47,6 +51,15 @@ public class PatientProfileActivity extends AppCompatActivity {
             getSupportActionBar().setLogo(R.mipmap.ic_launcher);
             getSupportActionBar().setDisplayUseLogoEnabled(true);
         }
+        buttonEditProfile.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientProfileActivity.this, EditPatientProfileActivity.class);
+                intent.putExtra("patientEmail", email);
+                startActivity(intent);
+            }
+        });
     }
 
     private void loadPatientDetails() {
@@ -58,6 +71,7 @@ public class PatientProfileActivity extends AppCompatActivity {
                 User user = dbHelper.getUserFromCursor(cursor);
                 if (user != null) {
                     // Set the data to UI elements
+                    email = userEmail;
                     textViewPatientName.setText(user.getFullName());
                     textViewEmailAddress.setText(userEmail);
                     textViewContactNumber.setText(user.getPhone());

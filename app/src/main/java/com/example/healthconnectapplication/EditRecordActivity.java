@@ -66,6 +66,7 @@ public class EditRecordActivity extends AppCompatActivity {
                 );
                 if (isUpdated) {
                     Toast.makeText(EditRecordActivity.this, "Appointment updated successfully", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(EditRecordActivity.this,PatientRecordsActivity.class));
                     finish();
                 } else {
                     Toast.makeText(EditRecordActivity.this, "Failed to update appointment.", Toast.LENGTH_SHORT).show();

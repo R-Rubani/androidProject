@@ -124,6 +124,7 @@ public class AddNewPatientRecordActivity extends AppCompatActivity {
         if (patientID.isEmpty() || firstName.isEmpty() || lastName.isEmpty() ||
                 appointmentDate.isEmpty() || diagnosis.isEmpty() || treatment.isEmpty() || medication.isEmpty()) {
             Toast.makeText(AddNewPatientRecordActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+
             return;
         }
         patientEmail = uDbHelper.getEmailByPatientId(parseInt(patientID));
