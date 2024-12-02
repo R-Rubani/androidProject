@@ -1,16 +1,10 @@
 package com.example.healthconnectapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.DatePickerDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -18,6 +12,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -28,10 +27,9 @@ import java.util.Locale;
 public class AppointmentDetailsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewAppointmentDetails;
-    private AppointmentDatabaseHelper dbHelper;
+    private AppointmentDateDatabaseHelper dbHelper;
     private EditText editTextAppointmentDate;
     private static final String CHANNEL_ID = "appointment_channel";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +42,7 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
             getSupportActionBar().setLogo(R.mipmap.ic_launcher);
             getSupportActionBar().setDisplayUseLogoEnabled(true);
         }
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Define the channel name and importance
             CharSequence name = "Appointment Notifications";
@@ -60,10 +59,9 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
             }
         }
 
-
         editTextAppointmentDate = findViewById(R.id.editTextApptDate);
 
-        //get the current date
+        // Get the current date
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         String currentDate = formatter.format(new Date());
 
@@ -71,8 +69,7 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Calendar calendar = Calendar.getInstance();
-                DatePickerDialog datePickerDialog = new DatePickerDialog(AppointmentDetailsActivity.this, (view, year, month, dayOfMonth) ->
-                {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(AppointmentDetailsActivity.this, (view, year, month, dayOfMonth) -> {
                     // Format selected date and set it to TextView
                     calendar.set(year, month, dayOfMonth);
                     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
@@ -87,9 +84,9 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-        String selectedDate = editTextAppointmentDate.getText().toString();
-        if(selectedDate.equals(currentDate)){
 
+        String selectedDate = editTextAppointmentDate.getText().toString();
+        if (selectedDate.equals(currentDate)) {
             NotificationCompat.Builder builder = new NotificationCompat.Builder(AppointmentDetailsActivity.this, CHANNEL_ID)
                     .setSmallIcon(R.drawable.health_connect_logo)
                     .setContentTitle("Reminder")
@@ -98,31 +95,27 @@ public class AppointmentDetailsActivity extends AppCompatActivity {
 
             NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.notify(1, builder.build());
-
         }
-
 
         // Initialize the "Add Appointment" button
         ImageButton addAppointment = findViewById(R.id.imageButtonAddAppointment);
-        addAppointment.setOnClickListener(v ->
-                startActivity(new Intent(AppointmentDetailsActivity.this, NewAppointmentActivity.class))
-        );
+        addAppointment.setOnClickListener(v -> startActivity(new Intent(AppointmentDetailsActivity.this, NewAppointmentActivity.class)));
 
         // Set up the RecyclerView
         recyclerViewAppointmentDetails = findViewById(R.id.recyclerViewAppointmentDetails);
         recyclerViewAppointmentDetails.setLayoutManager(new LinearLayoutManager(this));
 
         // Initialize the database helper
-        dbHelper = new AppointmentDatabaseHelper(this);
+        dbHelper = new AppointmentDateDatabaseHelper(this);
 
-        // Fetch appointments from the database
-        List<Appointment> appointments = dbHelper.getAllAppointments();
+        // Fetch appointment dates from the database
+        List<AppointmentDate> appointmentDates = dbHelper.getAllAppointments();
 
-        // Display appointments in the RecyclerView
-        if (appointments.isEmpty()) {
+        // Display appointment dates in the RecyclerView
+        if (appointmentDates.isEmpty()) {
             Toast.makeText(this, "No appointments found.", Toast.LENGTH_SHORT).show();
         } else {
-            AppointmentAdapter adapter = new AppointmentAdapter(appointments);
+            AppointmentDateAdapter adapter = new AppointmentDateAdapter(appointmentDates);
             recyclerViewAppointmentDetails.setAdapter(adapter);
         }
     }

@@ -81,4 +81,13 @@ public class DoctorRegistrationDatabaseHelper extends SQLiteOpenHelper {
 
         return doctorId;
     }
+    public boolean isDoctorEmailExists(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT " + COLUMN_ID + " FROM " + TABLE_NAME + " WHERE " + COLUMN_EMAIL + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{email});
+
+        boolean exists = cursor.moveToFirst();
+        cursor.close();
+        return exists;
+    }
 }

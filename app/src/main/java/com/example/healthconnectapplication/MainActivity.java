@@ -44,14 +44,14 @@ public class MainActivity extends AppCompatActivity {
             storeUserType("doctor");
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
-            finish();
+
         });
 
         buttonAsPatient.setOnClickListener(v -> {
             storeUserType("patient");
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
-            finish();
+
         });
 
         // Make Admin button visible on long press of the Doctor button
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             storeUserType("admin");
             Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
             startActivity(intent);
-            finish();
+            
         });
 
         // Clear SharedPreferences on restart (Optional for debugging)
